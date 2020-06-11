@@ -1,5 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Libre+Baskerville:wght@400;700&display=swap');
+
 *, html, body {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	font-family: 'Bree Serif', serif;
+	font-size: 16px;
+	color: #555;
+}
+
+button {
+	font-family: 'Bree Serif', serif;
+	font-size: 18px;
+	text-transform: uppercase;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+button:hover,
+button:focus {
+	background-color: #555;
+	color: #fff;
+	outline: none;
+}
+
+::-webkit-input-placeholder { /* Edge */
+  color: #555;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #555;
+}
+
+::placeholder {
+  color: #555;
 }
