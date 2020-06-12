@@ -11,45 +11,52 @@
 .search-form .keyword,
 .search-form .date > div,
 .search-form .search-btn {
-	padding: 5px 16px;
+	padding: 10px 16px;
 }
 
 .search-form .date {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .search-form .date > div {
 	flex: 1;
+	min-width: 240px;
 }
 
 .search-form label {
-	font-size: 14px;
+	font-family: 'Libre Baskerville', serif;
+	font-size: 12px;
+	font-weight: 700;
 	color: #fff;
+	letter-spacing: 0.5px;
 }
 
 .search-form input {
 	font-family: 'Libre Baskerville', serif;
 	font-size: 16px;
-	color: #555;
+	font-weight: 400;
+	color: #777;
 	letter-spacing: 0.5px;
 	display: block;
 	width: 100%;
 	height: 36px;
-	margin-top: 5px;
+	margin-top: 8px;
 	padding: 0 10px;
-	background-color: transparent;
+	background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
 	border: none;
-	border-bottom: 1px solid #999;
 	transition: all 0.2s ease;
 }
 
-.search-form input:hover,
 .search-form input:focus {
-	background-color: #f2f2f2;
-	color: #555;
-	border-color: #f2f2f2;
-	border-radius: 3px;
+	background-color: #fff;
+	color: #333;
 	outline: none;
+}
+
+.search-form::-webkit-datetime-edit-text {
+	color: #777;
 }
 
 .search-form ::-webkit-calendar-picker-indicator {
@@ -57,10 +64,19 @@
 }
 
 .search-form .search-btn {
-	margin-top: 20px;
+	margin-top: 15px;
 }
 
 .search-form .search-btn button {
+	background-color: #fff;
 	width: 100%;
 	height: 36px;
+}
+
+.search-form .search-btn button:hover {
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+.search-form .search-btn button:focus {
+	background-color: rgba(255, 255, 255, 0.5);
 }

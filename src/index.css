@@ -24,19 +24,17 @@ button {
 
 button:hover,
 button:focus {
-	background-color: #555;
-	color: #fff;
 	outline: none;
 }
 
 ::-webkit-input-placeholder { /* Edge */
-  color: #555;
+  color: #777;
 }
 
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: #555;
+  color: #777;
 }
 
 ::placeholder {
-  color: #555;
+  color: #777;
 }

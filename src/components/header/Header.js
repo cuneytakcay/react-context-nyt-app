@@ -4,7 +4,7 @@ import './Header.css'
 function Header() {
     return ( 
         <header>
-            <div className="logo">NYT Article Search</div>
+            <div className="logo">NYT <span>Article Finder</span></div>
         </header>
     )
 }
