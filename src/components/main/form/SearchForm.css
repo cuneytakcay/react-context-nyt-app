@@ -1,6 +1,6 @@
 .search-form {
 	background-color: #000;
-	padding:50px 0;
+	padding:40px 0;
 }
 
 .search-form form {
@@ -55,12 +55,17 @@
 	outline: none;
 }
 
+.search-form input[type="date"] {
+	cursor: text;
+}
+
 .search-form::-webkit-datetime-edit-text {
 	color: #777;
 }
 
 .search-form ::-webkit-calendar-picker-indicator {
 	filter: invert(40%);
+	cursor: pointer;
 }
 
 .search-form .search-btn {

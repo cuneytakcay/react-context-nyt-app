@@ -13,9 +13,10 @@ function Form() {
 		<div className="search-form">
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<div className="keyword">
-					<label for="keyword">Keyword</label>
+					<label htmlFor="keyword">Keyword</label>
 					<input
 						type="text"
+						name="keyword"
 						placeholder="e.g., covid-19"
 						id="keyword"
 						ref={register({ required: 'Please enter a keyword!' })}
@@ -24,17 +25,19 @@ function Form() {
 				</div>
 				<div className="date">
 					<div>
-						<label for="fromDate">From</label>
+						<label htmlFor="fromDate">From</label>
 						<input
 							type="date"
+							name="date"
 							id="fromDate"
 							ref={register}
 						/>
 					</div>
 					<div>
-						<label for="toDate">To</label>
+						<label htmlFor="toDate">To</label>
 						<input
 							type="date"
+							name="date"
 							id="toDate"
 							ref={register}
 						/>
