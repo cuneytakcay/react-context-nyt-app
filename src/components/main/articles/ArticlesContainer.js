@@ -18,17 +18,20 @@ function ArticlesContainer() {
 		fetchData();
 	}, []);
 
-	return ( 
-		<div className="articles-container">
-			{articles.articles.map((article, index) => {
-				return (
-					<Article
-						key={index}
-						article={article}
-					/>
-				)
-			})}
-		</div>
+	return (
+		<React.Fragment>
+			<h2>{articles.articles.length} Top-Headline Articles from the US</h2>
+			<div className="articles-container">
+				{articles.articles.map((article, index) => {
+					return (
+						<Article
+							key={index}
+							article={article}
+						/>
+					)
+				})}
+			</div>
+		</React.Fragment>
 	)
 }
 
