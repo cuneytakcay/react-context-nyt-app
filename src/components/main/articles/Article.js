@@ -13,7 +13,7 @@ function Article({ article }) {
 					<h3>
 						<a href={article.url} target="_blank">{article.title}</a>
 					</h3>
-					<p>{article.description}</p>
+					<p>{article.description.substring(0, 120)}...</p>
 					<div className="card-actions">
 						<a href={article.url} target="_blank" className="btn read-btn">Read</a>
 						<button className="btn save-btn">Save</button>
@@ -25,4 +25,3 @@ function Article({ article }) {
 }
 
 export default Article;
-//8fb26607476546999c5bf35724be417e
