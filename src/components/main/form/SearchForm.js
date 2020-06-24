@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import './SearchForm.css';
 
-function Form() {
+export const SearchForm = () => {
 	const { register, handleSubmit, errors } = useForm();
 
 	const onSubmit = data => {
@@ -50,5 +50,3 @@ function Form() {
 		</div>
 	)
 }
-
-export default Form;

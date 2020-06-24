@@ -1,28 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import Article from './Article';
-import axios from 'axios';
+import React from 'react';
+import { Article } from './Article';
 import './Articles.css';
 
-function ArticlesContainer() {
-	const [articles, setArticles] = useState({ articles: [] });
-
-	useEffect(() => {
-		const fetchData = async () => {
-			const response = await axios(
-				`https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`,
-			);
-
-			setArticles(response.data);
-		};
-
-		fetchData();
-	}, []);
-
+export const ArticlesContainer = ({ articles }) => {
 	return (
 		<React.Fragment>
-			<h2>{articles.articles.length} Top-Headline Articles from the US</h2>
+			<h2>{articles.length} Top-Headline Articles from the US</h2>
 			<div className="articles-container">
-				{articles.articles.map((article, index) => {
+				{articles.map((article, index) => {
 					return (
 						<Article
 							key={index}
@@ -34,5 +19,3 @@ function ArticlesContainer() {
 		</React.Fragment>
 	)
 }
-
-export default ArticlesContainer;
