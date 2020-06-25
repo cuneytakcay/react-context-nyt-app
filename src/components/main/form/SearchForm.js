@@ -2,12 +2,13 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import './SearchForm.css';
 
-export const SearchForm = () => {
+export const SearchForm = ({ searchArticle }) => {
 	const { register, handleSubmit, errors } = useForm();
 
-	const onSubmit = data => {
-		console.log(data);
-	}
+	const onSubmit = (data, e) => {
+		e.preventDefault();
+		searchArticle(data);
+	};
 
 	return (
 		<div className="search-form">
@@ -28,7 +29,7 @@ export const SearchForm = () => {
 						<label htmlFor="fromDate">From</label>
 						<input
 							type="date"
-							name="date"
+							name="firstDate"
 							id="fromDate"
 							ref={register}
 						/>
@@ -37,7 +38,7 @@ export const SearchForm = () => {
 						<label htmlFor="toDate">To</label>
 						<input
 							type="date"
-							name="date"
+							name="lastDate"
 							id="toDate"
 							ref={register}
 						/>
@@ -48,5 +49,5 @@ export const SearchForm = () => {
 				</div>
 			</form>
 		</div>
-	)
-}
+	);
+};

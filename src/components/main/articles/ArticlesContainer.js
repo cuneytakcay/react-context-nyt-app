@@ -2,10 +2,10 @@ import React from 'react';
 import { Article } from './Article';
 import './Articles.css';
 
-export const ArticlesContainer = ({ articles }) => {
+export const ArticlesContainer = ({ articles, title }) => {
 	return (
 		<React.Fragment>
-			<h2>{articles.length} Top-Headline Articles from the US</h2>
+			<h2>{title}</h2>
 			<div className="articles-container">
 				{articles.map((article, index) => {
 					return (

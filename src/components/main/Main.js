@@ -2,11 +2,11 @@ import React from 'react';
 import { SearchForm } from './form/SearchForm';
 import { ArticlesContainer } from './articles/ArticlesContainer';
 
-export const Main = ({ articles }) => {
+export const Main = ({ articles, title, searchArticle }) => {
 	return (
 		<main>
-			<SearchForm />
-			<ArticlesContainer articles={articles} />
+			<SearchForm searchArticle={searchArticle} />
+			<ArticlesContainer articles={articles} title={title} />
 		</main>
 	);
 };
