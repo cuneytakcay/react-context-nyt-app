@@ -20,9 +20,16 @@ export const SearchForm = ({ searchArticle }) => {
 						name="keyword"
 						placeholder="e.g., covid-19"
 						id="keyword"
-						ref={register({ required: 'Please enter a keyword!' })}
+						ref={register({ required: '!' })}
 					/>
-					{errors.keyword && <span>{errors.keyword.message}</span>}
+					{/* {errors.keyword && (
+						<span className="form-error">
+							<span className="trig">&#9650;</span>
+							<span className="exc">&#33;</span>
+							{errors.keyword.message}
+						</span>
+					)} */}
+					{errors.keyword && (<span className="keyword-error"><span className="exc">{errors.keyword.message}</span></span>)}
 				</div>
 				<div className="date">
 					<div>
