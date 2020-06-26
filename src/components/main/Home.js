@@ -2,7 +2,7 @@ import React from 'react';
 import { SearchForm } from './form/SearchForm';
 import { ArticlesContainer } from './articles/ArticlesContainer';
 
-export const Main = ({ articles, title, searchArticle }) => {
+export const Home = ({ articles, title, searchArticle }) => {
 	return (
 		<main>
 			<SearchForm searchArticle={searchArticle} />
