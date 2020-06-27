@@ -1,7 +1,8 @@
 import React from 'react';
+import Moment from 'react-moment';
 
 export const Article = ({
-	article: { url, title, urlToImage, description },
+	article: { url, title, urlToImage, description, publishedAt },
 }) => {
 	return (
 		<article>
@@ -17,7 +18,10 @@ export const Article = ({
 							{title}
 						</a>
 					</h3>
-					<p>{description.substring(0, 120)}...</p>
+					<span className="date">
+						<Moment format="MMM DD, YYYY">{publishedAt}</Moment>
+					</span>
+					<p>{description}</p>
 					<div className="card-actions">
 						<a
 							className="btn read-btn"

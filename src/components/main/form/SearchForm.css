@@ -8,9 +8,7 @@
 	margin: 0 auto;
 }
 
-.search-form .keyword,
-.search-form .date > div,
-.search-form .search-btn {
+.search-form .form-item {
 	padding: 10px 16px;
 }
 
@@ -33,10 +31,10 @@
 
 .search-form .keyword-error .exc {
 	background-color: #f00;
-    color: #fff;
-    padding: 0 10px 2px;
-    height: 22px;
-    border-radius: 50%;
+	color: #fff;
+	padding: 0 10px 2px;
+	height: 22px;
+	border-radius: 50%;
 }
 
 .search-form .form-error .trig {
@@ -54,7 +52,13 @@
 
 .search-form .date > div {
 	flex: 1;
-	min-width: 240px;
+	min-width: 200px;
+}
+
+@media (min-width: 1025px) {
+	.search-form .date > div:first-child {
+		margin-right: 25px;
+	}
 }
 
 .search-form label {
@@ -65,7 +69,8 @@
 	letter-spacing: 0.5px;
 }
 
-.search-form input {
+.search-form input,
+.search-form select {
 	font-family: 'Libre Baskerville', serif;
 	font-size: 16px;
 	font-weight: 400;

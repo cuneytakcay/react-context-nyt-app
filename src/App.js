@@ -8,10 +8,12 @@ import './App.css';
 class App extends Component {
 	state = {
 		articles: [],
+		sources: [],
 		title: '',
 	};
 
 	componentDidMount() {
+		// Get top headlines from the USA
 		axios
 			.get(
 				`https://newsapi.org/v2/top-headlines?country=us&sortBy=publishedAt&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
@@ -22,12 +24,29 @@ class App extends Component {
 					title: `${res.data.articles.length} Top-Headline Articles from the USA`,
 				})
 			);
+
+		// Get news sources in English
+		// To populate sources in the search dropdown
+		axios
+			.get(
+				`https://newsapi.org/v2/sources?language=en&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
+			)
+			.then(res =>
+				this.setState({
+					sources: res.data.sources,
+				})
+			);
 	}
 
 	searchArticle = data => {
 		axios
 			.get(
-				`https://newsapi.org/v2/everything?q=${data.keyword}&from=${data.lastDate}&to=${data.firstDate}&sortBy=publishedAt&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
+				`https://newsapi.org/v2/everything?q=
+				${data.keyword}&
+				from=${data.lastDate}&
+				to=${data.firstDate}&
+				sortBy=publishedAt&
+				apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
 			)
 			.then(res =>
 				this.setState({
@@ -47,6 +66,7 @@ class App extends Component {
 				<Home
 					title={this.state.title}
 					articles={this.state.articles}
+					sources={this.state.sources}
 					searchArticle={this.searchArticle}
 				/>
 				<Footer />
