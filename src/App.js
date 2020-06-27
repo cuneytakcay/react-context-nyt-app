@@ -10,45 +10,48 @@ const App = () => {
 	const [sources, setSources] = useState([]);
 	const [title, setTitle] = useState('');
 
-	useEffect(async () => {
-		// Get top headlines from the USA
-		const headlines = await axios.get(
-			`https://newsapi.org/v2/top-headlines?country=us&sortBy=publishedAt&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
+	const apiKey = process.env.REACT_APP_NEWS_API_KEY;
+
+	// Fetch top headlines from the USA display at the first page load
+	// Fetch the article sources to populate in the sources dropdown
+	const fetchData = () => {
+		const topHeadlines = `https://newsapi.org/v2/top-headlines?country=us&sortBy=publishedAt&apiKey=${apiKey}`;
+		const sources = `https://newsapi.org/v2/sources?language=en&apiKey=${apiKey}`;
+
+		const getTopHeadlines = axios.get(topHeadlines);
+		const getSources = axios.get(sources);
+
+		axios.all([getTopHeadlines, getSources]).then(
+			axios.spread((...allData) => {
+				setArticles(allData[0].data.articles);
+				setSources(allData[1].data.sources);
+				setTitle(
+					`${allData[0].data.articles.length} Top-Headline Articles from the USA`
+				);
+			})
 		);
+	};
 
-		setArticles(headlines.data.articles);
-		setTitle(
-			`${headlines.data.articles.length} Top-Headline Articles from the USA`
-		);
-
-		// Get news sources in English
-		// To populate sources in the search dropdown
-		// const sources = axios.get(
-		// 	`https://newsapi.org/v2/sources?language=en&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
-		// );
-
-		// setSources(sources.data.sources);
+	useEffect(() => {
+		fetchData();
 	}, []);
 
+	// Search articles by keyword and publish date
 	const searchArticle = data => {
-		axios
-			.get(
-				`https://newsapi.org/v2/everything?q=
-				${data.keyword}&
-				from=${data.lastDate}&
-				to=${data.firstDate}&
-				sortBy=publishedAt&
-				apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
-			)
-			.then(res =>
-				this.setState({
-					articles: res.data.articles,
-					title: `${res.data.articles.length} Articles About ${
-						data.keyword.charAt(0).toUpperCase() +
-						data.keyword.slice(1).toLowerCase()
-					}`,
-				})
+		const keyword = data.keyword;
+		const firstDate = data.firstDate;
+		const lastDate = data.lastDate;
+		const searchedArticles = `https://newsapi.org/v2/everything?q=${keyword}&from=${lastDate}&to=${firstDate}&sortBy=publishedAt&apiKey=${apiKey}`;
+
+		axios.get(searchedArticles).then(res => {
+			setArticles(res.data.articles);
+			setTitle(
+				`${res.data.articles.length} Articles About ${
+					keyword.charAt(0).toUpperCase() +
+					keyword.slice(1).toLowerCase()
+				}`
 			);
+		});
 	};
 
 	return (
