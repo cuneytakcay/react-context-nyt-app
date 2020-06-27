@@ -13,11 +13,9 @@ export const Article = ({
 					</a>
 				</div>
 				<div className="text-container">
-					<h3>
-						<a href={url} target="_blank" rel="noopener noreferrer">
-							{title}
-						</a>
-					</h3>
+					<a href={url} target="_blank" rel="noopener noreferrer">
+						<h3>{title}</h3>
+					</a>
 					<span className="date">
 						<Moment format="MMM DD, YYYY">{publishedAt}</Moment>
 					</span>
@@ -30,8 +28,8 @@ export const Article = ({
 							rel="noopener noreferrer"
 						>
 							Read
+							<i className="fab fa-readme" aria-hidden="true" />
 						</a>
-						<button className="btn save-btn">Save</button>
 					</div>
 				</div>
 			</div>

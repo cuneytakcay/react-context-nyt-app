@@ -16,12 +16,21 @@
 	box-shadow: 0px 5px 5px #ccc;
 }
 
+.articles-container .img-container {
+	overflow: hidden;
+}
+
 .articles-container .img-container img {
 	display: block;
 	width: 100%;
 	height: 200px;
 	object-fit: cover;
 	object-position: center;
+	transition: transform 0.2s ease;
+}
+
+.articles-container .img-container img:hover {
+	transform: scale(1.1);
 }
 
 .articles-container .text-container {
@@ -41,20 +50,31 @@
 	font-family: 'Libre Baskerville', serif;
 	font-size: 16px;
 	font-weight: 700;
-	line-height: 1.4;
+	line-height: 1.6;
 	color: #000;
 	margin-bottom: 10px;
-	transition: all 0.2s ease;
+	position: relative;
 }
 
-.articles-container h3 a:hover,
-.articles-container h3 a:focus {
-	text-decoration: underline;
+.articles-container h3::before {
+	content: '';
+	position: absolute;
+	bottom: -5px;
+	height: 2px;
+	left: -2px;
+	width: 0;
+	background-color: #000;
+	transition: width 0.3s ease;
+}
+
+.articles-container h3:hover::before {
+	width: 100%;
 }
 
 .articles-container .date {
 	display: block;
 	margin-bottom: 15px;
+	color: #5fa1d4;
 }
 
 .articles-container p {
@@ -71,18 +91,20 @@
 }
 
 .articles-container .card-actions .btn {
-	font-size: 16px;
+	font-size: 18px;
 	text-transform: lowercase;
 	padding: 3px 5px 6px;
 	width: calc(50% - 5px);
-	border: 1px solid #000;
+	border: 1px solid #5fa1d4;
 	transition: all 0.2s ease;
 	background-color: transparent;
 	color: #000;
 }
 
-.articles-container .card-actions .read-btn {
-	margin-right: 10px;
+.articles-container .card-actions .btn i {
+	margin-left: 5px;
+	font-size: 16px;
+	color: #5fa1d4;
 }
 
 .articles-container .card-actions .btn:hover,
@@ -92,10 +114,6 @@
 }
 
 .articles-container a {
-	color: inherit;
-	font-size: inherit;
-	font-weight: inherit;
-	font-family: inherit;
+	display: block;
 	text-decoration: none;
-	transition: inherit;
 }
