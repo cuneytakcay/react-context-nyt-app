@@ -1,44 +1,36 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Header } from './components/header/Header';
 import { Home } from './components/main/Home';
 import { Footer } from './components/footer/Footer';
 import axios from 'axios';
 import './App.css';
 
-class App extends Component {
-	state = {
-		articles: [],
-		sources: [],
-		title: '',
-	};
+const App = () => {
+	const [articles, setArticles] = useState([]);
+	const [sources, setSources] = useState([]);
+	const [title, setTitle] = useState('');
 
-	componentDidMount() {
+	useEffect(async () => {
 		// Get top headlines from the USA
-		axios
-			.get(
-				`https://newsapi.org/v2/top-headlines?country=us&sortBy=publishedAt&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
-			)
-			.then(res =>
-				this.setState({
-					articles: res.data.articles,
-					title: `${res.data.articles.length} Top-Headline Articles from the USA`,
-				})
-			);
+		const headlines = await axios.get(
+			`https://newsapi.org/v2/top-headlines?country=us&sortBy=publishedAt&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
+		);
+
+		setArticles(headlines.data.articles);
+		setTitle(
+			`${headlines.data.articles.length} Top-Headline Articles from the USA`
+		);
 
 		// Get news sources in English
 		// To populate sources in the search dropdown
-		axios
-			.get(
-				`https://newsapi.org/v2/sources?language=en&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
-			)
-			.then(res =>
-				this.setState({
-					sources: res.data.sources,
-				})
-			);
-	}
+		// const sources = axios.get(
+		// 	`https://newsapi.org/v2/sources?language=en&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`
+		// );
 
-	searchArticle = data => {
+		// setSources(sources.data.sources);
+	}, []);
+
+	const searchArticle = data => {
 		axios
 			.get(
 				`https://newsapi.org/v2/everything?q=
@@ -59,20 +51,18 @@ class App extends Component {
 			);
 	};
 
-	render() {
-		return (
-			<div className="app-container">
-				<Header />
-				<Home
-					title={this.state.title}
-					articles={this.state.articles}
-					sources={this.state.sources}
-					searchArticle={this.searchArticle}
-				/>
-				<Footer />
-			</div>
-		);
-	}
-}
+	return (
+		<div className="app-container">
+			<Header />
+			<Home
+				title={title}
+				articles={articles}
+				sources={sources}
+				searchArticle={searchArticle}
+			/>
+			<Footer />
+		</div>
+	);
+};
 
 export default App;
