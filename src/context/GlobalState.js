@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import axios from 'axios';
 import AppContext from './appContext';
 import AppReducer from './appReducer';
@@ -12,7 +12,7 @@ const GlobalState = props => {
 		title: '',
 	};
 
-	const [state, dispatch] = useReducer(appReducer, initialState);
+	const [state, dispatch] = useReducer(AppReducer, initialState);
 
 	const apiKey = process.env.REACT_APP_NEWS_API_KEY;
 

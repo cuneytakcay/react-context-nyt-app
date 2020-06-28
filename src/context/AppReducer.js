@@ -13,12 +13,14 @@ export default (state, action) => {
 			return {
 				...state,
 				articles: action.payload,
-				title: `${action.payload.length} Articles About ${
-					// keyword.charAt(0).toUpperCase() +
-					// keyword.slice(1).toLowerCase()
-				}`
+				title: `${action.payload.length} Articles About`
 			};
 		default:
 			return state;
 	}
 };
+
+// ${
+// 	keyword.charAt(0).toUpperCase() +
+// 	keyword.slice(1).toLowerCase()
+// }
