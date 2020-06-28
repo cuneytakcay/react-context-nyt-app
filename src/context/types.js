@@ -1,2 +1,3 @@
-export const GET_DATA = 'GET_DATA';
+export const GET_HEADLINES = 'GET_HEADLINES';
+export const GET_SOURCES = 'GET_SOURCES';
 export const SEARCH_ARTICLES = 'SEARCH_ARTICLES';

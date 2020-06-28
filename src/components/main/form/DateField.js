@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const DateField = ({register}) => {
+export const DateField = ({ register }) => {
 	return (
 		<div className="date form-item">
 			<div>

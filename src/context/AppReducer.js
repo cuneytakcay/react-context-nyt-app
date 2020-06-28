@@ -1,19 +1,23 @@
-import { GET_DATA, SEARCH_ARTICLES } from './types';
+import { GET_HEADLINES, GET_SOURCES, SEARCH_ARTICLES } from './types';
 
 export default (state, action) => {
 	switch (action.type) {
-		case GET_DATA:
+		case GET_HEADLINES:
 			return {
 				...state,
-				articles: action.payload[0].data.articles,
-				sources: action.payload[1].data.sources,
-				title: `${action.payload[0].data.articles.length} Top-Headline Articles from the USA`
+				articles: action.payload,
+				title: `${action.payload.length} Top-Headline Articles from the USA`,
+			};
+		case GET_SOURCES:
+			return {
+				...state,
+				sources: action.payload
 			};
 		case SEARCH_ARTICLES:
 			return {
 				...state,
 				articles: action.payload,
-				title: `${action.payload.length} Articles About`
+				title: `${action.payload.length} Articles About`,
 			};
 		default:
 			return state;

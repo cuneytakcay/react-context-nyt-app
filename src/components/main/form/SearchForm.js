@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { KeywordField } from './KeywordField';
 import { SourceField } from './SourceField';
 import { DateField } from './DateField';
 import { useForm } from 'react-hook-form';
 import './SearchForm.css';
+import AppContext from '../../../context/appContext';
 
-export const SearchForm = ({ sources, searchArticle }) => {
+export const SearchForm = () => {
 	const { register, handleSubmit, errors } = useForm();
+	const appContext = useContext(AppContext);
+
+	const { sources, searchArticle } = appContext;
 
 	const onSubmit = (data, e) => {
 		e.preventDefault();
