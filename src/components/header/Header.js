@@ -1,10 +1,23 @@
 import React from 'react';
-import './Header.css'
+import { Link } from 'react-router-dom';
+import './Header.css';
 
 export const Header = () => {
-    return ( 
-        <header>
-            <div className="logo">NEWS <span>Article Finder</span></div>
-        </header>
-    )
-}
+	return (
+		<header>
+			<div className="logo">
+				NEWS <span>Article Finder</span>
+			</div>
+			<nav>
+				<ul>
+					<li>
+						<Link to="/">Home</Link>
+					</li>
+					<li>
+						<Link to="/about">About</Link>
+					</li>
+				</ul>
+			</nav>
+		</header>
+	);
+};

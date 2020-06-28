@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Article } from './Article';
-import './Articles.css';
 import AppContext from '../../../context/appContext';
+import './Articles.css';
 
 export const ArticlesContainer = () => {
 	const appContext = useContext(AppContext);
