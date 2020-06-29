@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { RadioField } from './RadioField';
 import { KeywordField } from './KeywordField';
 import { SourceField } from './SourceField';
 import { DateField } from './DateField';
@@ -21,6 +22,7 @@ export const SearchForm = () => {
 	return (
 		<div className="search-form">
 			<form onSubmit={handleSubmit(onSubmit)}>
+				<RadioField register={register} />
 				<KeywordField register={register} errors={errors} />
 				<SourceField sources={sources} register={register} />
 				<DateField register={register} />

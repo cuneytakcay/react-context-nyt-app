@@ -12,6 +12,40 @@
 	padding: 10px 16px;
 }
 
+.search-form fieldset {
+	width: 100%;
+	padding: 0 16px;
+	border: none;
+}
+
+.search-form .radio {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.search-form .radio > div {
+	display: flex;
+	flex-flow: row-reverse;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+
+.search-form .radio label {
+	font-family: 'Libre Baskerville', serif;
+	font-size: 14px;
+	font-weight: 400;
+	color: #777;
+}
+
+.search-form .radio input {
+	width: 15px;
+	height: 15px;
+	margin: 0;
+	margin-right: 10px;
+}
+
 .search-form .keyword {
 	position: relative;
 }
@@ -61,7 +95,8 @@
 	}
 }
 
-.search-form label {
+.search-form label,
+.search-form legend {
 	font-family: 'Libre Baskerville', serif;
 	font-size: 12px;
 	font-weight: 700;
