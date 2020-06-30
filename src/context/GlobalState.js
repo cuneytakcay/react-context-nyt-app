@@ -40,7 +40,7 @@ const GlobalState = props => {
 	};
 
 	useEffect(() => {
-		// true ? fetchHeadlines() : fetchSources()
+		true ? fetchHeadlines() : fetchSources()
 	}, []);
 
 	// Search articles by keyword and publish date

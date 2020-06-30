@@ -17,9 +17,13 @@ export const SearchForm = () => {
 	const appContext = useContext(AppContext);
 	const { sources, searchArticle } = appContext;
 
+	// Displays the keyword search field at the load of the page.
+	let initialKeyword = true;
+	if (watch('categoryPicker') || watch('sourcePicker'))  initialKeyword = false;
+
 	const onSubmit = (data, e) => {
 		e.preventDefault();
-		// searchArticle(data);
+		searchArticle(data);
 		console.log(data);
 	};
 
@@ -27,9 +31,15 @@ export const SearchForm = () => {
 		<div className="search-form">
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<RadioField register={register} />
-				{showKeywordField && <KeywordField register={register} errors={errors} />}
-				{showCategoryField && <CategoryField sources={sources} register={register} />}
-				{showSourcesField && <SourceField sources={sources} register={register} />}
+				{(initialKeyword || showKeywordField) && (
+					<KeywordField register={register} errors={errors} />
+				)}
+				{showCategoryField && (
+					<CategoryField sources={sources} register={register} />
+				)}
+				{showSourcesField && (
+					<SourceField sources={sources} register={register} />
+				)}
 				<DateField register={register} />
 				<div className="search-btn form-item">
 					<button>Search</button>

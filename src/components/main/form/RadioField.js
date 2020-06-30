@@ -1,6 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export const RadioField = ({ register }) => {
+	const [keyword, setKeyword] = useState(true);
+	const [category, setCategory] = useState(false);
+	const [source, setSource] = useState(false);
+
+	const handleKeyword = e => {
+		setKeyword(true);
+		setCategory(false);
+		setSource(false);
+	};
+
+	const handleCategory = e => {
+		setKeyword(false);
+		setCategory(true);
+		setSource(false);
+	};
+
+	const handleSource = e => {
+		setKeyword(false);
+		setCategory(false);
+		setSource(true);
+	};
+
 	return (
 		<fieldset>
 			<legend>Search By:</legend>
@@ -12,7 +34,9 @@ export const RadioField = ({ register }) => {
 						name="keywordPicker"
 						id="radioKey"
 						ref={register}
-						defaultChecked
+						value="keyword"
+						onChange={handleKeyword}
+						checked={keyword}
 					/>
 				</div>
 				<div>
@@ -22,6 +46,9 @@ export const RadioField = ({ register }) => {
 						name="categoryPicker"
 						id="radioCat"
 						ref={register}
+						value="category"
+						onChange={handleCategory}
+						checked={category}
 					/>
 				</div>
 				<div>
@@ -31,6 +58,9 @@ export const RadioField = ({ register }) => {
 						name="sourcePicker"
 						id="radioSource"
 						ref={register}
+						value="source"
+						onChange={handleSource}
+						checked={source}
 					/>
 				</div>
 			</div>
