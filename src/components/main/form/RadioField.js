@@ -9,16 +9,17 @@ export const RadioField = ({ register }) => {
 					<label htmlFor="radioKey">Keyword</label>
 					<input
 						type="radio"
-						name="radioKey"
+						name="keywordPicker"
 						id="radioKey"
 						ref={register}
+						defaultChecked
 					/>
 				</div>
 				<div>
 					<label htmlFor="radioCat">Category</label>
 					<input
 						type="radio"
-						name="radioCat"
+						name="categoryPicker"
 						id="radioCat"
 						ref={register}
 					/>
@@ -27,7 +28,7 @@ export const RadioField = ({ register }) => {
 					<label htmlFor="radioSource">Source</label>
 					<input
 						type="radio"
-						name="radioSource"
+						name="sourcePicker"
 						id="radioSource"
 						ref={register}
 					/>

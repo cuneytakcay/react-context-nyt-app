@@ -37,6 +37,7 @@
 	font-size: 14px;
 	font-weight: 400;
 	color: #777;
+	text-transform: lowercase;
 }
 
 .search-form .radio input {
@@ -81,15 +82,20 @@
 
 .search-form .date {
 	display: flex;
-	flex-wrap: wrap;
+	flex-direction: column;
+	padding: 0 16px;
 }
 
 .search-form .date > div {
 	flex: 1;
 	min-width: 200px;
+	padding: 10px 0;
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 500px) {
+	.search-form .date {
+		flex-direction: row;
+	}
 	.search-form .date > div:first-child {
 		margin-right: 25px;
 	}
@@ -102,6 +108,7 @@
 	font-weight: 700;
 	color: #fff;
 	letter-spacing: 0.5px;
+	text-transform: uppercase;
 }
 
 .search-form input,
