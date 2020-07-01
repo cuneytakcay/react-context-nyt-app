@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import AppContext from '../../../context/appContext';
 
 export const RadioField = ({ register }) => {
+	const appContext = useContext(AppContext);
+	const { fetchSources } = appContext;
 	const [keyword, setKeyword] = useState(true);
 	const [category, setCategory] = useState(false);
 	const [source, setSource] = useState(false);
@@ -21,6 +24,7 @@ export const RadioField = ({ register }) => {
 		setKeyword(false);
 		setCategory(false);
 		setSource(true);
+		fetchSources();
 	};
 
 	return (

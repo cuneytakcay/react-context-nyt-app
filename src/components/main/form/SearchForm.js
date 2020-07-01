@@ -46,7 +46,10 @@ export const SearchForm = () => {
 					/>
 				)}
 				{showSourcesField && (
-					<SourceField sources={sources} register={register} />
+					<SourceField
+						sources={sources}
+						register={register}
+					/>
 				)}
 				<DateField register={register} />
 				<div className="search-btn form-item">

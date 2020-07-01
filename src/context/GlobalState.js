@@ -8,7 +8,6 @@ const GlobalState = props => {
 	const initialState = {
 		articles: [],
 		sources: [],
-		category: ['business', 'technology', 'sports'],
 		title: '',
 	};
 
@@ -32,6 +31,10 @@ const GlobalState = props => {
 		});
 	};
 
+	useEffect(() => {
+		fetchHeadlines();
+	}, []);
+
 	// Fetch the article sources to populate in the sources dropdown
 	const fetchSources = async () => {
 		const res = await axios.get(
@@ -44,47 +47,22 @@ const GlobalState = props => {
 		});
 	};
 
-	useEffect(() => {
-		// fetchHeadlines();
-	}, []);
-
 	// Search articles by keyword and publish date
 	const searchArticle = async data => {
 		let res = {};
 
-		switch (data) {
-			case data.categoryPicker:
-				res = await axios.get(
-					`https://newsapi.org/v2/top-headlines?
-					language=en&
-					category=${data.category}&
-					from=${data.firstDate}&
-					to=${data.lastDate}&
-					sortBy=publishedAt&
-					apiKey=${apiKey}`
-				);
-				break;
-			case data.sourcePicker:
-				res = await axios.get(
-					`https://newsapi.org/v2/everything?
-					language=en&
-					sources=${data.source}&
-					from=${data.firstDate}&
-					to=${data.lastDate}&
-					sortBy=publishedAt&
-					apiKey=${apiKey}`
-				);
-				break;
-			default:
-				res = await axios.get(
-					`https://newsapi.org/v2/everything?
-					q=${data.keyword}&
-					from=${data.firstDate}&
-					to=${data.lastDate}&
-					sortBy=publishedAt&
-					apiKey=${apiKey}`
-				);
-				break;
+		if (data.keywordPicker === "keyword") {
+			res = await axios.get(
+				`https://newsapi.org/v2/everything?q=${data.keyword}&language=en&from=${data.firstDate}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
+			);
+		} else if (data.categoryPicker === "category") {
+			res = await axios.get(
+				`https://newsapi.org/v2/top-headlines?country=us&category=${data.keyword}&from=${data.firstDate}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
+			);
+		} else if (data.sourcePicker === "source") {
+			res = await axios.get(
+				`https://newsapi.org/v2/everything?language=en&sources=${data.source}&from=${data.firstDate}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
+			);
 		}
 
 		dispatch({
@@ -99,6 +77,7 @@ const GlobalState = props => {
 				articles: state.articles,
 				sources: state.sources,
 				title: state.title,
+				fetchSources,
 				searchArticle,
 			}}
 		>
