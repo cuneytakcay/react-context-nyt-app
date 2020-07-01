@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { RadioField } from './RadioField';
 import { KeywordField } from './KeywordField';
-import { CategoryField } from './CategoryField';
 import { SourceField } from './SourceField';
 import { DateField } from './DateField';
 import { useForm } from 'react-hook-form';
@@ -19,7 +18,8 @@ export const SearchForm = () => {
 
 	// Displays the keyword search field at the load of the page.
 	let initialKeyword = true;
-	if (watch('categoryPicker') || watch('sourcePicker'))  initialKeyword = false;
+	if (watch('categoryPicker') || watch('sourcePicker'))
+		initialKeyword = false;
 
 	const onSubmit = (data, e) => {
 		e.preventDefault();
@@ -32,10 +32,18 @@ export const SearchForm = () => {
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<RadioField register={register} />
 				{(initialKeyword || showKeywordField) && (
-					<KeywordField register={register} errors={errors} />
+					<KeywordField
+						register={register}
+						errors={errors}
+						placeholder="e.g., covid-19..."
+					/>
 				)}
 				{showCategoryField && (
-					<CategoryField sources={sources} register={register} />
+					<KeywordField
+						register={register}
+						errors={errors}
+						placeholder="e.g., business, technology..."
+					/>
 				)}
 				{showSourcesField && (
 					<SourceField sources={sources} register={register} />

@@ -8,6 +8,7 @@ const GlobalState = props => {
 	const initialState = {
 		articles: [],
 		sources: [],
+		category: ['business', 'technology', 'sports'],
 		title: '',
 	};
 
@@ -18,7 +19,11 @@ const GlobalState = props => {
 	// Fetch top headlines from the USA display at the first page load
 	const fetchHeadlines = async () => {
 		const res = await axios.get(
-			`https://newsapi.org/v2/top-headlines?country=us&sortBy=publishedAt&apiKey=${apiKey}`
+			`https://newsapi.org/v2/top-headlines?
+			country=us&
+			language=en&
+			sortBy=publishedAt&
+			apiKey=${apiKey}`
 		);
 
 		dispatch({
@@ -40,14 +45,47 @@ const GlobalState = props => {
 	};
 
 	useEffect(() => {
-		true ? fetchHeadlines() : fetchSources()
+		// fetchHeadlines();
 	}, []);
 
 	// Search articles by keyword and publish date
 	const searchArticle = async data => {
-		const res = await axios.get(
-			`https://newsapi.org/v2/everything?q=${data.keyword}&from=${data.lastDate}&to=${data.firstDate}&sortBy=publishedAt&apiKey=${apiKey}`
-		);
+		let res = {};
+
+		switch (data) {
+			case data.categoryPicker:
+				res = await axios.get(
+					`https://newsapi.org/v2/top-headlines?
+					language=en&
+					category=${data.category}&
+					from=${data.firstDate}&
+					to=${data.lastDate}&
+					sortBy=publishedAt&
+					apiKey=${apiKey}`
+				);
+				break;
+			case data.sourcePicker:
+				res = await axios.get(
+					`https://newsapi.org/v2/everything?
+					language=en&
+					sources=${data.source}&
+					from=${data.firstDate}&
+					to=${data.lastDate}&
+					sortBy=publishedAt&
+					apiKey=${apiKey}`
+				);
+				break;
+			default:
+				res = await axios.get(
+					`https://newsapi.org/v2/everything?
+					q=${data.keyword}&
+					from=${data.firstDate}&
+					to=${data.lastDate}&
+					sortBy=publishedAt&
+					apiKey=${apiKey}`
+				);
+				break;
+		}
 
 		dispatch({
 			type: SEARCH_ARTICLES,

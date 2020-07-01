@@ -5,19 +5,19 @@ export const RadioField = ({ register }) => {
 	const [category, setCategory] = useState(false);
 	const [source, setSource] = useState(false);
 
-	const handleKeyword = e => {
+	const handleKeyword = () => {
 		setKeyword(true);
 		setCategory(false);
 		setSource(false);
 	};
 
-	const handleCategory = e => {
+	const handleCategory = () => {
 		setKeyword(false);
 		setCategory(true);
 		setSource(false);
 	};
 
-	const handleSource = e => {
+	const handleSource = () => {
 		setKeyword(false);
 		setCategory(false);
 		setSource(true);
