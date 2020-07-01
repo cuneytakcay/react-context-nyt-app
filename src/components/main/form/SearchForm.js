@@ -24,7 +24,6 @@ export const SearchForm = () => {
 	const onSubmit = (data, e) => {
 		e.preventDefault();
 		searchArticle(data);
-		console.log(data);
 	};
 
 	return (
@@ -53,7 +52,7 @@ export const SearchForm = () => {
 				)}
 				<DateField register={register} />
 				<div className="search-btn form-item">
-					<button>Search</button>
+					<button><span>Search</span></button>
 				</div>
 			</form>
 		</div>

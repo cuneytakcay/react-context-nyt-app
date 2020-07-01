@@ -18,11 +18,7 @@ const GlobalState = props => {
 	// Fetch top headlines from the USA display at the first page load
 	const fetchHeadlines = async () => {
 		const res = await axios.get(
-			`https://newsapi.org/v2/top-headlines?
-			country=us&
-			language=en&
-			sortBy=publishedAt&
-			apiKey=${apiKey}`
+			`https://newsapi.org/v2/top-headlines?country=us&language=en&sortBy=publishedAt&apiKey=${apiKey}`
 		);
 
 		dispatch({
@@ -32,7 +28,7 @@ const GlobalState = props => {
 	};
 
 	useEffect(() => {
-		fetchHeadlines();
+		// fetchHeadlines();
 	}, []);
 
 	// Fetch the article sources to populate in the sources dropdown
@@ -61,7 +57,7 @@ const GlobalState = props => {
 			);
 		} else if (data.sourcePicker === "source") {
 			res = await axios.get(
-				`https://newsapi.org/v2/everything?language=en&sources=${data.source}&from=${data.firstDate}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
+				`https://newsapi.org/v2/everything?sources=${data.source}&language=en&from=${data.firstDate}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
 			);
 		}
 
