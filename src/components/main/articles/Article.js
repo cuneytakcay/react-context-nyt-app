@@ -5,7 +5,11 @@ import noImage from './noImage.png';
 export const Article = ({
 	article: { url, title, urlToImage, description, publishedAt },
 }) => {
-	const img = (urlToImage === "null" || urlToImage === null) ? noImage : urlToImage;
+	const img =
+		urlToImage === 'null' || urlToImage === null ? noImage : urlToImage;
+
+	const fbShareLink = `https://www.facebook.com/sharer/sharer.php?u=${url}&amp;src=sdkpreparse`;
+	const twShareLink = `https://twitter.com/intent/tweet?text=${title} - ${url}`;
 
 	return (
 		<article>
@@ -38,6 +42,39 @@ export const Article = ({
 								/>
 							</span>
 						</a>
+						<div className="btn share-btn">
+							<span className="share">
+								Share
+								<i
+									className="fas fa-share"
+									aria-hidden="true"
+								/>
+							</span>
+							<div className="fb-tw">
+								<a
+									className="fb"
+									href={fbShareLink}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<i
+										className="fab fa-facebook-f"
+										aria-hidden="true"
+									></i>
+								</a>
+								<a
+									className="tw"
+									href={twShareLink}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<i
+										className="fab fa-twitter"
+										aria-hidden="true"
+									></i>
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

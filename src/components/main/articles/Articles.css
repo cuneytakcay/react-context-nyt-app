@@ -89,13 +89,14 @@
 .articles-container .card-actions {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	margin-top: auto;
 }
 
 .articles-container .card-actions .btn {
 	font-size: 18px;
 	text-transform: lowercase;
-	padding: 3px 5px 6px;
+	padding: 5px 5px 6px;
 	width: calc(50% - 5px);
 	border: 1px solid #5fa1d4;
 	transition: all 0.2s ease;
@@ -131,7 +132,8 @@
 	transition: color 0.2s ease;
 }
 
-.articles-container .card-actions .btn:hover i {
+.articles-container .card-actions .btn:hover i,
+.articles-container .card-actions .btn:focus i {
 	color: #fff;
 }
 
@@ -142,6 +144,45 @@
 .articles-container .card-actions .btn:focus {
 	background-color: #60a0d1;
 	color: #fff;
+}
+
+.articles-container .card-actions .share-btn {
+	position: relative;
+	overflow: hidden;
+}
+
+.articles-container .card-actions .share-btn::before {
+	content: none;
+}
+
+.articles-container .card-actions .share-btn .fb-tw {
+	display: flex;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: -100%;
+	width: 100%;
+	background-color: #fff;
+    transition: 0.3s ease;
+}
+
+.articles-container .card-actions .share-btn:hover .fb-tw {
+	left: 0;
+}
+
+.articles-container .card-actions .share-btn .fb,
+.articles-container .card-actions .share-btn .tw {
+	flex: 1;
+	padding: 7px 0 6px;
+}
+
+.articles-container .card-actions .share-btn .fb {
+	border-right: 1px solid #60a0d1;
+}
+
+.articles-container .card-actions .share-btn .fb-tw i {
+	color: #60a0d1;
 }
 
 .articles-container a {
