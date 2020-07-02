@@ -101,17 +101,46 @@
 	transition: all 0.2s ease;
 	background-color: transparent;
 	color: #000;
+	position: relative;
+}
+
+.articles-container .card-actions .btn::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	background-color: #60a0d1;
+	border-radius: 2px;
+	transition: 0.2s ease;
+}
+
+.articles-container .card-actions .btn:hover::before {
+	width: 100%;
+}
+
+.articles-container .card-actions .btn span {
+	position: relative;
 }
 
 .articles-container .card-actions .btn i {
 	margin-left: 5px;
 	font-size: 16px;
 	color: #5fa1d4;
+	transition: color 0.2s ease;
 }
 
-.articles-container .card-actions .btn:hover,
+.articles-container .card-actions .btn:hover i {
+	color: #fff;
+}
+
+.articles-container .card-actions .btn:hover {
+	color: #fff;
+}
+
 .articles-container .card-actions .btn:focus {
-	background-color: #000;
+	background-color: #60a0d1;
 	color: #fff;
 }
 

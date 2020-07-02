@@ -28,7 +28,8 @@ const GlobalState = props => {
 	};
 
 	useEffect(() => {
-		// fetchHeadlines();
+		fetchHeadlines();
+		// eslint-disable-next-line
 	}, []);
 
 	// Fetch the article sources to populate in the sources dropdown
@@ -47,23 +48,26 @@ const GlobalState = props => {
 	const searchArticle = async data => {
 		let res = {};
 
-		if (data.keywordPicker === "keyword") {
+		if (data.keywordPicker === 'keyword') {
 			res = await axios.get(
-				`https://newsapi.org/v2/everything?q=${data.keyword}&language=en&from=${data.firstDate}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
+				`https://newsapi.org/v2/everything?q=${data.keyword.trim()}&language=en&pageSize=24&from=${data.firstDate}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
 			);
-		} else if (data.categoryPicker === "category") {
+		} else if (data.categoryPicker === 'category') {
 			res = await axios.get(
-				`https://newsapi.org/v2/top-headlines?country=us&category=${data.keyword}&from=${data.firstDate}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
+				`https://newsapi.org/v2/top-headlines?country=us&category=${data.keyword.trim()}&pageSize=24&from=${data.firstDate}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
 			);
-		} else if (data.sourcePicker === "source") {
+		} else if (data.sourcePicker === 'source') {
 			res = await axios.get(
-				`https://newsapi.org/v2/everything?sources=${data.source}&language=en&from=${data.firstDate}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
+				`https://newsapi.org/v2/everything?sources=${data.source}&language=en&pageSize=24&from=${data.firstDate}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
 			);
 		}
 
 		dispatch({
 			type: SEARCH_ARTICLES,
-			payload: res.data.articles,
+			payload: {
+				data: data,
+				articles: res.data.articles,
+			},
 		});
 	};
 

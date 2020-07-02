@@ -7,6 +7,7 @@ export const DateField = ({ register }) => {
 				<label htmlFor="fromDate">From</label>
 				<input
 					type="date"
+					min="2020-06-01"
 					name="firstDate"
 					id="fromDate"
 					ref={register}
@@ -14,7 +15,13 @@ export const DateField = ({ register }) => {
 			</div>
 			<div>
 				<label htmlFor="toDate">To</label>
-				<input type="date" name="lastDate" id="toDate" ref={register} />
+				<input
+					type="date"
+					min="2020-06-01"
+					name="lastDate"
+					id="toDate"
+					ref={register}
+				/>
 			</div>
 		</div>
 	);

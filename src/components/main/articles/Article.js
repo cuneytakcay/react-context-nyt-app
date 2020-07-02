@@ -1,15 +1,18 @@
 import React from 'react';
 import Moment from 'react-moment';
+import noImage from './noImage.png';
 
 export const Article = ({
 	article: { url, title, urlToImage, description, publishedAt },
 }) => {
+	const img = (urlToImage === "null" || urlToImage === null) ? noImage : urlToImage;
+
 	return (
 		<article>
 			<div className="article-card">
 				<div className="img-container">
 					<a href={url} target="_blank" rel="noopener noreferrer">
-						<img src={urlToImage} alt={title} />
+						<img src={img} alt={title} />
 					</a>
 				</div>
 				<div className="text-container">
@@ -27,8 +30,13 @@ export const Article = ({
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							Read
-							<i className="fab fa-readme" aria-hidden="true" />
+							<span>
+								Read
+								<i
+									className="fab fa-readme"
+									aria-hidden="true"
+								/>
+							</span>
 						</a>
 					</div>
 				</div>

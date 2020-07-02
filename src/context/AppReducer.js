@@ -11,13 +11,18 @@ export default (state, action) => {
 		case GET_SOURCES:
 			return {
 				...state,
-				sources: action.payload
+				sources: action.payload,
 			};
 		case SEARCH_ARTICLES:
 			return {
 				...state,
-				articles: action.payload,
-				title: `${action.payload.length} Articles About`,
+				articles: action.payload.articles,
+				title:
+					action.payload.data.sourcePicker === 'source'
+						? `${action.payload.articles.length} Articles from "${action.payload.data.source}"`
+						: action.payload.data.categoryPicker === 'category'
+						? `${action.payload.articles.length} Articles in the "${action.payload.data.keyword.trim()}" Category`
+						: `${action.payload.articles.length} Articles about "${action.payload.data.keyword.trim()}"`,
 			};
 		default:
 			return state;
