@@ -13,7 +13,7 @@ const GlobalState = props => {
 
 	const [state, dispatch] = useReducer(AppReducer, initialState);
 
-	const apiKey = process.env.REACT_APP_NEWS_API_KEY;
+	const apiKey = process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_NEWS_API_KEY : process.env.NEWS_API_KEY;
 
 	// Fetch top headlines from the USA display at the first page load
 	const fetchHeadlines = async () => {

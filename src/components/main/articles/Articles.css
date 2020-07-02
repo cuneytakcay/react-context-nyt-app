@@ -185,6 +185,12 @@
 	color: #60a0d1;
 }
 
+@media (max-width: 1024px) {
+	.articles-container .card-actions .share-btn .fb-tw {
+		left: 0;
+	}
+}
+
 .articles-container a {
 	display: block;
 	text-decoration: none;
