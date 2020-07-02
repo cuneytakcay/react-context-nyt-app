@@ -4,6 +4,7 @@ import { KeywordField } from './KeywordField';
 import { SourceField } from './SourceField';
 import { DateField } from './DateField';
 import { useForm } from 'react-hook-form';
+import formBackground from './form-background.jpg';
 import './SearchForm.css';
 import AppContext from '../../../context/appContext';
 
@@ -26,8 +27,17 @@ export const SearchForm = () => {
 		searchArticle(data);
 	};
 
+	const style = {
+		background: `linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 1)), url(${formBackground})`,
+		backgroundSize: 'cover',
+		backgroundPosition: 'center',
+	};
+
 	return (
-		<div className="search-form">
+		<div
+			className="search-form"
+			style={style}
+		>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<RadioField register={register} />
 				{(initialKeyword || showKeywordField) && (
@@ -45,14 +55,13 @@ export const SearchForm = () => {
 					/>
 				)}
 				{showSourcesField && (
-					<SourceField
-						sources={sources}
-						register={register}
-					/>
+					<SourceField sources={sources} register={register} />
 				)}
 				<DateField register={register} />
 				<div className="search-btn form-item">
-					<button><span>Search</span></button>
+					<button>
+						<span>Search</span>
+					</button>
 				</div>
 			</form>
 		</div>

@@ -13,7 +13,12 @@ const GlobalState = props => {
 
 	const [state, dispatch] = useReducer(AppReducer, initialState);
 
-	const apiKey = process.env.NODE_ENV !== 'production' ? process.env.REACT_APP_NEWS_API_KEY : process.env.NEWS_API_KEY;
+	let apiKey;
+	if (process.env.NODE_ENV !== 'production') {
+		apiKey = process.env.REACT_APP_NEWS_API_KEY;
+	} else {
+		apiKey = process.env.NEWS_API_KEY;
+	}
 
 	// Fetch top headlines from the USA display at the first page load
 	const fetchHeadlines = async () => {
@@ -50,11 +55,15 @@ const GlobalState = props => {
 
 		if (data.keywordPicker === 'keyword') {
 			res = await axios.get(
-				`https://newsapi.org/v2/everything?q=${data.keyword.trim()}&language=en&pageSize=24&from=${data.firstDate}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
+				`https://newsapi.org/v2/everything?q=${data.keyword.trim()}&language=en&pageSize=24&from=${
+					data.firstDate
+				}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
 			);
 		} else if (data.categoryPicker === 'category') {
 			res = await axios.get(
-				`https://newsapi.org/v2/top-headlines?country=us&category=${data.keyword.trim()}&pageSize=24&from=${data.firstDate}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
+				`https://newsapi.org/v2/top-headlines?country=us&category=${data.keyword.trim()}&pageSize=24&from=${
+					data.firstDate
+				}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
 			);
 		} else if (data.sourcePicker === 'source') {
 			res = await axios.get(
