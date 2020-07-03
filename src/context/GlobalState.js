@@ -33,7 +33,7 @@ const GlobalState = props => {
 	};
 
 	useEffect(() => {
-		fetchHeadlines();
+		// fetchHeadlines();
 		// eslint-disable-next-line
 	}, []);
 
