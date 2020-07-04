@@ -1,36 +1,34 @@
 import React from 'react';
 import Moment from 'react-moment';
-import noImage from '../noImage.png';
 
 export const Article = ({
-	article: { url, title, urlToImage, description, publishedAt },
+	article: { web_url, headline, multimedia, lead_paragraph, pub },
 }) => {
-	const img =
-		urlToImage === 'null' || urlToImage === null ? noImage : urlToImage;
+	const img = `https://static01.nyt.com/${multimedia[0].url}`;
 
-	const fbShareLink = `https://www.facebook.com/sharer/sharer.php?u=${url}&amp;src=sdkpreparse`;
-	const twShareLink = `https://twitter.com/intent/tweet?text=${title} - ${url}`;
+	const fbShareLink = `https://www.facebook.com/sharer/sharer.php?u=${web_url}&amp;src=sdkpreparse`;
+	const twShareLink = `https://twitter.com/intent/tweet?text=${headline.main} - ${web_url}`;
 
 	return (
 		<article>
 			<div className="article-card">
 				<div className="img-container">
-					<a href={url} target="_blank" rel="noopener noreferrer">
-						<img src={img} alt={title} />
+					<a href={web_url} target="_blank" rel="noopener noreferrer">
+						<img src={img} alt={headline.main} />
 					</a>
 				</div>
 				<div className="text-container">
-					<a href={url} target="_blank" rel="noopener noreferrer">
-						<h3>{title}</h3>
+					<a href={web_url} target="_blank" rel="noopener noreferrer">
+						<h3>{headline.main}</h3>
 					</a>
 					<span className="date">
-						<Moment format="MMM DD, YYYY">{publishedAt}</Moment>
+						<Moment format="MMM DD, YYYY">{pub}</Moment>
 					</span>
-					<p>{description}</p>
+					<p>{lead_paragraph.substr(0, 200)}...</p>
 					<div className="card-actions">
 						<a
 							className="btn read-btn"
-							href={url}
+							href={web_url}
 							target="_blank"
 							rel="noopener noreferrer"
 						>

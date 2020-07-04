@@ -2,7 +2,7 @@ import React, { useReducer, useEffect } from 'react';
 import axios from 'axios';
 import ArticlesContext from './articlesContext';
 import ArticlesReducer from './articlesReducer';
-import { GET_HEADLINES, GET_SOURCES, SEARCH_ARTICLES } from '../types';
+import { GET_SOURCES, SEARCH_ARTICLES, GET_ARTICLES } from '../types';
 
 const ArticlesState = props => {
 	const initialState = {
@@ -15,25 +15,25 @@ const ArticlesState = props => {
 
 	let apiKey;
 	if (process.env.NODE_ENV !== 'production') {
-		apiKey = process.env.REACT_APP_NEWS_API_KEY;
+		apiKey = process.env.REACT_APP_ARTICLE_FINDER_API_KEY;
 	} else {
-		apiKey = process.env.NEWS_API_KEY;
+		apiKey = process.env.ARTICLE_FINDER_API_KEY;
 	}
 
 	// Fetch top headlines from the USA display at the first page load
-	const fetchHeadlines = async () => {
+	const fetchArticles = async () => {
 		const res = await axios.get(
-			`https://newsapi.org/v2/top-headlines?country=us&language=en&sortBy=publishedAt&apiKey=${apiKey}`
+			`https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}`
 		);
 
 		dispatch({
-			type: GET_HEADLINES,
-			payload: res.data.articles,
+			type: GET_ARTICLES,
+			payload: res.data.response.docs,
 		});
 	};
 
 	useEffect(() => {
-		fetchHeadlines();
+		fetchArticles();
 		// eslint-disable-next-line
 	}, []);
 

@@ -1,8 +1,8 @@
-import { GET_HEADLINES, GET_SOURCES, SEARCH_ARTICLES } from '../types';
+import { GET_ARTICLES, GET_SOURCES, SEARCH_ARTICLES } from '../types';
 
 export default (state, action) => {
 	switch (action.type) {
-		case GET_HEADLINES:
+		case GET_ARTICLES:
 			return {
 				...state,
 				articles: action.payload,
