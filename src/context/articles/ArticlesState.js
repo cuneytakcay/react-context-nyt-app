@@ -2,13 +2,14 @@ import React, { useReducer, useEffect } from 'react';
 import axios from 'axios';
 import ArticlesContext from './articlesContext';
 import ArticlesReducer from './articlesReducer';
-import { GET_SOURCES, SEARCH_ARTICLES, GET_ARTICLES } from '../types';
+import { SEARCH_ARTICLES, GET_ARTICLES, SET_LOADING } from '../types';
 
 const ArticlesState = props => {
 	const initialState = {
 		articles: [],
 		sources: [],
 		title: '',
+		loading: false,
 	};
 
 	const [state, dispatch] = useReducer(ArticlesReducer, initialState);
@@ -22,6 +23,8 @@ const ArticlesState = props => {
 
 	// Fetch top headlines from the USA display at the first page load
 	const fetchArticles = async () => {
+		setLoading();
+
 		const res = await axios.get(
 			`https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}`
 		);
@@ -43,14 +46,16 @@ const ArticlesState = props => {
 			`https://newsapi.org/v2/sources?language=en&apiKey=${apiKey}`
 		);
 
-		dispatch({
-			type: GET_SOURCES,
-			payload: res.data.sources,
-		});
+		// dispatch({
+		// 	type: GET_SOURCES,
+		// 	payload: res.data.sources,
+		// });
 	};
 
 	// Search articles by keyword and publish date
 	const searchArticle = async data => {
+		setLoading();
+
 		let res = {};
 
 		if (data.keywordPicker === 'keyword') {
@@ -80,12 +85,16 @@ const ArticlesState = props => {
 		});
 	};
 
+	// Set Loading to display spinner
+	const setLoading = () => dispatch({ type: SET_LOADING });
+
 	return (
 		<ArticlesContext.Provider
 			value={{
 				articles: state.articles,
 				sources: state.sources,
 				title: state.title,
+				loading: state.loading,
 				fetchSources,
 				searchArticle,
 			}}
