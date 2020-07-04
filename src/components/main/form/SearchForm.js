@@ -6,7 +6,7 @@ import { DateField } from './DateField';
 import { useForm } from 'react-hook-form';
 import formBackground from './form-background.jpg';
 import './SearchForm.css';
-import AppContext from '../../../context/appContext';
+import ArticlesContext from '../../../context/articles/articlesContext';
 
 export const SearchForm = () => {
 	const { register, handleSubmit, errors, watch } = useForm();
@@ -14,8 +14,8 @@ export const SearchForm = () => {
 	const showCategoryField = watch('categoryPicker');
 	const showSourcesField = watch('sourcePicker');
 
-	const appContext = useContext(AppContext);
-	const { sources, searchArticle } = appContext;
+	const articlesContext = useContext(ArticlesContext);
+	const { sources, searchArticle } = articlesContext;
 
 	// Displays the keyword search field at the load of the page.
 	let initialKeyword = true;
@@ -34,10 +34,7 @@ export const SearchForm = () => {
 	};
 
 	return (
-		<div
-			className="search-form"
-			style={style}
-		>
+		<div className="search-form" style={style}>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<RadioField register={register} />
 				{(initialKeyword || showKeywordField) && (

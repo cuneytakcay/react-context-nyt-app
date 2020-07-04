@@ -4,7 +4,7 @@ import './Footer.css';
 export const Footer = () => {
 	return (
 		<footer>
-			<div className="copyright">Copyright 2020</div>
+			<div className="copyright">&copy; 2020</div>
 		</footer>
 	);
 };

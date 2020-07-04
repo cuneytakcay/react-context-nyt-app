@@ -1,6 +1,6 @@
 import React from 'react';
 import { SearchForm } from './form/SearchForm';
-import { ArticlesContainer } from './articles/ArticlesContainer';
+import { ArticlesContainer } from './content/articles/ArticlesContainer';
 
 export const Home = () => {
 	return (

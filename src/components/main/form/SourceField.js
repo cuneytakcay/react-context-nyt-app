@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import AppContext from '../../../context/appContext';
+import ArticlesContext from '../../../context/articles/articlesContext';
 
 export const SourceField = ({ register }) => {
-	const appContext = useContext(AppContext);
-	const { sources } = appContext;
-	
+	const articlesContext = useContext(ArticlesContext);
+	const { sources } = articlesContext;
+
 	return (
 		<div className="source-dd form-item">
 			<label htmlFor="source">Source</label>

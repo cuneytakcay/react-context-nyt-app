@@ -1,17 +1,17 @@
 import React, { useReducer, useEffect } from 'react';
 import axios from 'axios';
-import AppContext from './appContext';
-import AppReducer from './appReducer';
-import { GET_HEADLINES, GET_SOURCES, SEARCH_ARTICLES } from './types';
+import ArticlesContext from './articlesContext';
+import ArticlesReducer from './articlesReducer';
+import { GET_HEADLINES, GET_SOURCES, SEARCH_ARTICLES } from '../types';
 
-const GlobalState = props => {
+const ArticlesState = props => {
 	const initialState = {
 		articles: [],
 		sources: [],
 		title: '',
 	};
 
-	const [state, dispatch] = useReducer(AppReducer, initialState);
+	const [state, dispatch] = useReducer(ArticlesReducer, initialState);
 
 	let apiKey;
 	if (process.env.NODE_ENV !== 'production') {
@@ -33,7 +33,7 @@ const GlobalState = props => {
 	};
 
 	useEffect(() => {
-		// fetchHeadlines();
+		fetchHeadlines();
 		// eslint-disable-next-line
 	}, []);
 
@@ -81,7 +81,7 @@ const GlobalState = props => {
 	};
 
 	return (
-		<AppContext.Provider
+		<ArticlesContext.Provider
 			value={{
 				articles: state.articles,
 				sources: state.sources,
@@ -91,8 +91,8 @@ const GlobalState = props => {
 			}}
 		>
 			{props.children}
-		</AppContext.Provider>
+		</ArticlesContext.Provider>
 	);
 };
 
-export default GlobalState;
+export default ArticlesState;

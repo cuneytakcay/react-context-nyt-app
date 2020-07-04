@@ -6,11 +6,11 @@ import { About } from './components/main/About';
 import { NotFound } from './components/main/NotFound';
 import { Footer } from './components/footer/Footer';
 import './App.css';
-import GlobalState from './context/GlobalState';
+import ArticlesState from './context/articles/ArticlesState';
 
 const App = () => {
 	return (
-		<GlobalState>
+		<ArticlesState>
 			<Router>
 				<div className="app-container">
 					<Header />
@@ -22,7 +22,7 @@ const App = () => {
 					<Footer />
 				</div>
 			</Router>
-		</GlobalState>
+		</ArticlesState>
 	);
 };
 

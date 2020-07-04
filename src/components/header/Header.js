@@ -6,7 +6,7 @@ export const Header = () => {
 	return (
 		<header>
 			<div className="logo">
-				NEWS <span>Article Finder</span>
+				NYT <span>Article Finder</span>
 			</div>
 			<nav>
 				<ul>

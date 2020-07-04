@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Article } from './Article';
-import AppContext from '../../../context/appContext';
+import ArticlesContext from '../../../../context/articles/articlesContext';
 import './Articles.css';
 
 export const ArticlesContainer = () => {
-	const appContext = useContext(AppContext);
-	const { title, articles } = appContext;
+	const articlesContext = useContext(ArticlesContext);
+	const { title, articles } = articlesContext;
 	return (
 		<React.Fragment>
 			<h2>{title}</h2>

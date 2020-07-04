@@ -1,6 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
-import noImage from './noImage.png';
+import noImage from '../noImage.png';
 
 export const Article = ({
 	article: { url, title, urlToImage, description, publishedAt },
