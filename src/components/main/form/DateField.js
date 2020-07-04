@@ -4,23 +4,23 @@ export const DateField = ({ register }) => {
 	return (
 		<div className="date form-item">
 			<div>
-				<label htmlFor="fromDate">From</label>
+				<label htmlFor="beginDate">From</label>
 				<input
 					type="date"
-					min="2020-06-01"
-					name="firstDate"
-					id="fromDate"
+					name="beginDate"
+					id="beginDate"
 					ref={register}
+					required
 				/>
 			</div>
 			<div>
-				<label htmlFor="toDate">To</label>
+				<label htmlFor="endDate">To</label>
 				<input
 					type="date"
-					min="2020-06-01"
-					name="lastDate"
-					id="toDate"
+					name="endDate"
+					id="endDate"
 					ref={register}
+					required
 				/>
 			</div>
 		</div>

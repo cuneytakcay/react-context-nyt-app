@@ -47,42 +47,6 @@
 	margin-right: 10px;
 }
 
-.search-form .keyword {
-	position: relative;
-}
-
-.search-form .keyword-error {
-	position: absolute;
-	bottom: 10px;
-	left: 15px;
-	right: 15px;
-	height: 36px;
-	border-radius: 3px;
-	background-color: rgba(255, 0, 0, 0.15);
-	text-align: right;
-	pointer-events: none;
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	padding-right: 10px;
-}
-
-.search-form .keyword-error .exc {
-	background-color: #f00;
-	color: #fff;
-	padding: 2px 9px 1px;
-	height: 22px;
-	border-radius: 50%;
-}
-
-.search-form .form-error .trig {
-	position: absolute;
-	top: -20px;
-	left: 5px;
-	font-size: 20px;
-	color: #f00;
-}
-
 .search-form .date {
 	display: flex;
 	flex-direction: column;

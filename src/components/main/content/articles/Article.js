@@ -1,10 +1,11 @@
 import React from 'react';
 import Moment from 'react-moment';
+import noImage from './noImage.png';
 
 export const Article = ({
-	article: { web_url, headline, multimedia, lead_paragraph, pub },
+	article: { web_url, headline, multimedia, lead_paragraph, pub_date },
 }) => {
-	const img = `https://static01.nyt.com/${multimedia[0].url}`;
+	const img = multimedia.length > 0 && multimedia[0].url ? `https://static01.nyt.com/${multimedia[0].url}` : noImage;
 
 	const fbShareLink = `https://www.facebook.com/sharer/sharer.php?u=${web_url}&amp;src=sdkpreparse`;
 	const twShareLink = `https://twitter.com/intent/tweet?text=${headline.main} - ${web_url}`;
@@ -22,7 +23,7 @@ export const Article = ({
 						<h3>{headline.main}</h3>
 					</a>
 					<span className="date">
-						<Moment format="MMM DD, YYYY">{pub}</Moment>
+						<Moment format="MMM DD, YYYY">{pub_date}</Moment>
 					</span>
 					<p>{lead_paragraph.substr(0, 200)}...</p>
 					<div className="card-actions">

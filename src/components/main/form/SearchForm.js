@@ -9,7 +9,7 @@ import './SearchForm.css';
 import ArticlesContext from '../../../context/articles/articlesContext';
 
 export const SearchForm = () => {
-	const { register, handleSubmit, errors, watch } = useForm();
+	const { register, handleSubmit, watch } = useForm();
 	const showKeywordField = watch('keywordPicker');
 	const showCategoryField = watch('categoryPicker');
 	const showSourcesField = watch('sourcePicker');
@@ -40,14 +40,12 @@ export const SearchForm = () => {
 				{(initialKeyword || showKeywordField) && (
 					<KeywordField
 						register={register}
-						errors={errors}
 						placeholder="e.g., covid-19..."
 					/>
 				)}
 				{showCategoryField && (
 					<KeywordField
 						register={register}
-						errors={errors}
 						placeholder="e.g., business, technology..."
 					/>
 				)}

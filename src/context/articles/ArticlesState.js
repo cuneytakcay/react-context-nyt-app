@@ -55,9 +55,9 @@ const ArticlesState = props => {
 
 		if (data.keywordPicker === 'keyword') {
 			res = await axios.get(
-				`https://newsapi.org/v2/everything?q=${data.keyword.trim()}&language=en&pageSize=24&from=${
-					data.firstDate
-				}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
+				`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${data.keyword.trim()}&begin_date=${
+					data.beginDate
+				}&end_date=${data.endDate}&api-key=${apiKey}`
 			);
 		} else if (data.categoryPicker === 'category') {
 			res = await axios.get(
@@ -75,7 +75,7 @@ const ArticlesState = props => {
 			type: SEARCH_ARTICLES,
 			payload: {
 				data: data,
-				articles: res.data.articles,
+				articles: res.data.response.docs,
 			},
 		});
 	};
