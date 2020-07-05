@@ -15,7 +15,7 @@ export default (state, action) => {
 				articles: action.payload.articles,
 				title: `${
 					action.payload.articles.length
-				} Articles about "${action.payload.data.keyword.trim()}"`,
+				} Articles with the keyword "${action.payload.data.keyword.trim()}"`,
 				loading: false,
 			};
 		case SET_LOADING:
