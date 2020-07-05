@@ -1,26 +1,16 @@
 import React, { useContext } from 'react';
-import { RadioField } from './RadioField';
-import { KeywordField } from './KeywordField';
-import { SourceField } from './SourceField';
-import { DateField } from './DateField';
 import { useForm } from 'react-hook-form';
+import { KeywordField } from './KeywordField';
+import { DateField } from './DateField';
 import formBackground from './form-background.jpg';
 import './SearchForm.css';
 import ArticlesContext from '../../../context/articles/articlesContext';
 
 export const SearchForm = () => {
-	const { register, handleSubmit, watch } = useForm();
-	const showKeywordField = watch('keywordPicker');
-	const showCategoryField = watch('categoryPicker');
-	const showSourcesField = watch('sourcePicker');
+	const { register, handleSubmit } = useForm();
 
 	const articlesContext = useContext(ArticlesContext);
-	const { sources, searchArticle } = articlesContext;
-
-	// Displays the keyword search field at the load of the page.
-	let initialKeyword = true;
-	if (watch('categoryPicker') || watch('sourcePicker'))
-		initialKeyword = false;
+	const { searchArticle } = articlesContext;
 
 	const onSubmit = (data, e) => {
 		e.preventDefault();
@@ -36,22 +26,10 @@ export const SearchForm = () => {
 	return (
 		<div className="search-form" style={style}>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<RadioField register={register} />
-				{(initialKeyword || showKeywordField) && (
-					<KeywordField
-						register={register}
-						placeholder="e.g., covid-19..."
-					/>
-				)}
-				{showCategoryField && (
-					<KeywordField
-						register={register}
-						placeholder="e.g., business, technology..."
-					/>
-				)}
-				{showSourcesField && (
-					<SourceField sources={sources} register={register} />
-				)}
+				<KeywordField
+					register={register}
+					placeholder="e.g., covid-19..."
+				/>
 				<DateField register={register} />
 				<div className="search-btn form-item">
 					<button>

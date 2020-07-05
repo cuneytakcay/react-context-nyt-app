@@ -7,7 +7,6 @@ import { SEARCH_ARTICLES, GET_ARTICLES, SET_LOADING } from '../types';
 const ArticlesState = props => {
 	const initialState = {
 		articles: [],
-		sources: [],
 		title: '',
 		loading: false,
 	};
@@ -21,8 +20,8 @@ const ArticlesState = props => {
 		apiKey = process.env.ARTICLE_FINDER_API_KEY;
 	}
 
-	// Fetch top headlines from the USA display at the first page load
-	const fetchArticles = async () => {
+	// Get articles from NYT to display at the first page load
+	const getArticles = async () => {
 		setLoading();
 
 		const res = await axios.get(
@@ -36,45 +35,19 @@ const ArticlesState = props => {
 	};
 
 	useEffect(() => {
-		fetchArticles();
+		getArticles();
 		// eslint-disable-next-line
 	}, []);
-
-	// Fetch the article sources to populate in the sources dropdown
-	const fetchSources = async () => {
-		const res = await axios.get(
-			`https://newsapi.org/v2/sources?language=en&apiKey=${apiKey}`
-		);
-
-		// dispatch({
-		// 	type: GET_SOURCES,
-		// 	payload: res.data.sources,
-		// });
-	};
 
 	// Search articles by keyword and publish date
 	const searchArticle = async data => {
 		setLoading();
 
-		let res = {};
-
-		if (data.keywordPicker === 'keyword') {
-			res = await axios.get(
-				`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${data.keyword.trim()}&begin_date=${
-					data.beginDate
-				}&end_date=${data.endDate}&api-key=${apiKey}`
-			);
-		} else if (data.categoryPicker === 'category') {
-			res = await axios.get(
-				`https://newsapi.org/v2/top-headlines?country=us&category=${data.keyword.trim()}&pageSize=24&from=${
-					data.firstDate
-				}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
-			);
-		} else if (data.sourcePicker === 'source') {
-			res = await axios.get(
-				`https://newsapi.org/v2/everything?sources=${data.source}&language=en&pageSize=24&from=${data.firstDate}&to=${data.lastDate}&sortBy=publishedAt&apiKey=${apiKey}`
-			);
-		}
+		const res = await axios.get(
+			`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${data.keyword.trim()}&begin_date=${
+				data.beginDate
+			}&end_date=${data.endDate}&api-key=${apiKey}`
+		);
 
 		dispatch({
 			type: SEARCH_ARTICLES,
@@ -92,10 +65,8 @@ const ArticlesState = props => {
 		<ArticlesContext.Provider
 			value={{
 				articles: state.articles,
-				sources: state.sources,
 				title: state.title,
 				loading: state.loading,
-				fetchSources,
 				searchArticle,
 			}}
 		>
