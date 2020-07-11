@@ -8,7 +8,7 @@ let apiKey;
 if (process.env.NODE_ENV !== 'production') {
 	apiKey = process.env.REACT_APP_ARTICLE_API_KEY;
 } else {
-	apiKey = process.env.ARTICLE_API_KEY;
+	apiKey = process.env.REACT_APP_ARTICLE_API_KEY;
 }
 
 const ArticlesState = props => {
