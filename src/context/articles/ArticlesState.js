@@ -4,12 +4,7 @@ import ArticlesContext from './articlesContext';
 import ArticlesReducer from './articlesReducer';
 import { SEARCH_ARTICLES, GET_ARTICLES, SET_LOADING } from '../types';
 
-let apiKey;
-if (process.env.NODE_ENV !== 'production') {
-	apiKey = process.env.REACT_APP_ARTICLE_API_KEY;
-} else {
-	apiKey = process.env.REACT_APP_ARTICLE_API_KEY;
-}
+const apiKey = process.env.REACT_APP_ARTICLE_API_KEY;
 
 const ArticlesState = props => {
 	const initialState = {
