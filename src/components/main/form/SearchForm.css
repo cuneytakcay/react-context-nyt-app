@@ -24,15 +24,19 @@
 
 .search-form .date > div {
 	padding: 10px 0;
-	width: 100%;
-	display: block;
+	width: calc(50% - 5px);
+	display: inline-block;
+}
+
+.search-form .date > div:first-child {
+	margin-right: 10px;
 }
 
 @media (min-width: 500px) {
 	.search-form .date > div {
 		width: calc(50% - 10px);
-		display: inline-block;
 	}
+
 	.search-form .date > div:first-child {
 		margin-right: 20px;
 	}
