@@ -1,3 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Libre+Baskerville:wght@400;700&display=swap');
+
+*,
+html,
+body {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	font-family: 'Libre Baskerville', serif;
+	font-size: 16px;
+	line-height: 1.2;
+	color: #555;
+}
+
+h1 {
+	font-family: 'Bree Serif', serif;
+	font-size: 46px;
+	font-weight: 400;
+	color: #000;
+	text-align: center;
+}
+
+h2 {
+	font-family: 'Bree Serif', serif;
+	font-size: 32px;
+	font-weight: 400;
+	color: #60a0d1;
+	margin-top: 30px;
+	padding: 0 16px;
+	text-align: center;
+	text-transform: uppercase;
+	position: relative;
+}
+
+button,
+.btn {
+	font-family: 'Bree Serif', serif;
+	font-size: 18px;
+	color: #000;
+	text-transform: uppercase;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+	text-align: center;
+	transition: all 0.2s ease;
+}
+
+button:hover,
+button:focus {
+	outline: none;
+}
+
+::-webkit-input-placeholder {
+	/* Edge */
+	color: #777;
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: #777;
+}
+
+::placeholder {
+	color: #777;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
 .app-container {
 	display: flex;
 	flex-direction: column;

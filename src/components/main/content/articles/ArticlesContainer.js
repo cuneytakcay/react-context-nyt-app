@@ -7,7 +7,7 @@ import './Articles.css';
 export const ArticlesContainer = () => {
 	const articlesContext = useContext(ArticlesContext);
 	const { title, articles, loading } = articlesContext;
-	if (articlesContext.loading) {
+	if (loading) {
 		return <Spinner />;
 	} else {
 		return (
