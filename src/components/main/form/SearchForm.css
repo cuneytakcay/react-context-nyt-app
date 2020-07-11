@@ -10,6 +10,7 @@
 
 .search-form .form-item {
 	padding: 10px 16px;
+	width: 100% !important; /* For mobile devices */
 }
 
 .search-form fieldset {
