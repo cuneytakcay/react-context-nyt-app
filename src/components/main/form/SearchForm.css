@@ -19,6 +19,35 @@
 	border: none;
 }
 
+.search-form .radio {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.search-form .radio > div {
+	display: flex;
+	flex-flow: row-reverse;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+
+.search-form .radio label {
+	font-family: 'Libre Baskerville', serif;
+	font-size: 14px;
+	font-weight: 400;
+	color: #999;
+	text-transform: lowercase;
+}
+
+.search-form .radio input {
+	width: 15px;
+	height: 15px;
+	margin: 0;
+	margin-right: 10px;
+}
+
 .search-form .date {
 	padding: 0 16px;
 }
