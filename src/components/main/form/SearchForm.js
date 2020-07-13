@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { RadioField } from './RadioField';
 import { KeywordField } from './KeywordField';
 import { DateField } from './DateField';
 import formBackground from './form-background.jpg';
@@ -26,6 +27,7 @@ export const SearchForm = () => {
 	return (
 		<div className="search-form" style={style}>
 			<form onSubmit={handleSubmit(onSubmit)}>
+				<RadioField register={register} />
 				<KeywordField
 					register={register}
 					placeholder="e.g., covid-19..."
