@@ -35,7 +35,7 @@ const ArticlesState = props => {
 	}, []);
 
 	// Search articles by keyword and publish date
-	const searchArticle = async data => {
+	const searchArticles = async data => {
 		setLoading();
 
 		const res = await axios.get(
@@ -62,7 +62,7 @@ const ArticlesState = props => {
 				articles: state.articles,
 				title: state.title,
 				loading: state.loading,
-				searchArticle,
+				searchArticles,
 			}}
 		>
 			{props.children}
