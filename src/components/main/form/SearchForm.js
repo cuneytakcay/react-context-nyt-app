@@ -3,12 +3,16 @@ import { useForm } from 'react-hook-form';
 import { RadioField } from './RadioField';
 import { KeywordField } from './KeywordField';
 import { DateField } from './DateField';
-import formBackground from './form-background.jpg';
+import articlesBackground from './articles-background.jpg';
+import booksBackground from './books-background.jpg';
 import './SearchForm.css';
 import ArticlesContext from '../../../context/articles/articlesContext';
 
 export const SearchForm = () => {
-	const { register, handleSubmit } = useForm();
+	const { register, handleSubmit, watch } = useForm();
+
+	const showArticles = watch('articlesPicker');
+	const showBooks = watch('booksPicker');
 
 	const articlesContext = useContext(ArticlesContext);
 	const { searchArticle } = articlesContext;
@@ -18,8 +22,14 @@ export const SearchForm = () => {
 		searchArticle(data);
 	};
 
+	const bgImage = showArticles
+		? articlesBackground
+		: showBooks
+		? booksBackground
+		: undefined;
+
 	const style = {
-		background: `linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 1)), url(${formBackground})`,
+		background: `linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 1)), url(${bgImage})`,
 		backgroundSize: 'cover',
 		backgroundPosition: 'center',
 	};
