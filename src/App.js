@@ -7,21 +7,24 @@ import { NotFound } from './components/main/NotFound';
 import { Footer } from './components/footer/Footer';
 import './App.css';
 import ArticlesState from './context/articles/ArticlesState';
+import BooksState from './context/books/BooksState';
 
 const App = () => {
 	return (
 		<ArticlesState>
-			<Router>
-				<div className="app-container">
-					<Header />
-					<Switch>
-						<Route exact path="/" component={Home} />
-						<Route exact path="/about" component={About} />
-						<Route component={NotFound} />
-					</Switch>
-					<Footer />
-				</div>
-			</Router>
+			<BooksState>
+				<Router>
+					<div className="app-container">
+						<Header />
+						<Switch>
+							<Route exact path="/" component={Home} />
+							<Route exact path="/about" component={About} />
+							<Route component={NotFound} />
+						</Switch>
+						<Footer />
+					</div>
+				</Router>
+			</BooksState>
 		</ArticlesState>
 	);
 };

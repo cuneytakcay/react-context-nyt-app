@@ -15,11 +15,11 @@ export const SearchForm = () => {
 	const showBooks = watch('booksPicker');
 
 	const articlesContext = useContext(ArticlesContext);
-	const { searchArticle } = articlesContext;
+	const { searchArticles } = articlesContext;
 
 	const onSubmit = (data, e) => {
 		e.preventDefault();
-		searchArticle(data);
+		searchArticles(data);
 	};
 
 	const bgImage = showArticles
@@ -29,7 +29,7 @@ export const SearchForm = () => {
 		: undefined;
 
 	const style = {
-		background: `linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 1)), url(${bgImage})`,
+		backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65),rgba(0, 0, 0, 0.85)), url(${bgImage})`,
 		backgroundSize: 'cover',
 		backgroundPosition: 'center',
 	};

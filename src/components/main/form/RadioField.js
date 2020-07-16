@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import BooksContext from '../../../context/books/booksContext';
 
 export const RadioField = ({ register }) => {
 	const [articles, setArticles] = useState(true);
 	const [books, setBooks] = useState(false);
 
+	const booksContext = useContext(BooksContext);
+	const { getBooks } = booksContext;
+	
 	const handleArticles = () => {
 		setArticles(true);
 		setBooks(false);
@@ -12,6 +16,7 @@ export const RadioField = ({ register }) => {
 	const handleBooks = () => {
 		setArticles(false);
 		setBooks(true);
+		getBooks();
 	};
 
 	return (

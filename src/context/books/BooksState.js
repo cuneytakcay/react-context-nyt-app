@@ -20,12 +20,12 @@ const BooksState = props => {
 		setLoading();
 
 		const res = await axios.get(
-			`https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}`
+			`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${apiKey}`
 		);
 
 		dispatch({
 			type: GET_BOOKS,
-			payload: res.data.response.docs,
+			payload: res.data.results,
 		});
 	};
 
