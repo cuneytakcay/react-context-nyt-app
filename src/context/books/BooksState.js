@@ -20,13 +20,14 @@ const BooksState = props => {
 		setLoading();
 
 		const res = await axios.get(
-			`https://api.nytimes.com/svc/books/v3/lists/names.json?api-key=${apiKey}`
+			`https://api.nytimes.com/svc/books/v3/lists/hardcover-fiction.json?api-key=${apiKey}`
 		);
 
 		dispatch({
 			type: GET_BOOKS,
 			payload: res.data.results,
 		});
+		console.log(res.data.results)
 	};
 
 	// Search books by keyword and publish date

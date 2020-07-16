@@ -55,16 +55,16 @@ button:focus {
 
 ::-webkit-input-placeholder {
 	/* Edge */
-	color: #777;
+	color: #333;
 }
 
 :-ms-input-placeholder {
 	/* Internet Explorer 10-11 */
-	color: #777;
+	color: #333;
 }
 
 ::placeholder {
-	color: #777;
+	color: #333;
 }
 
 ul {
