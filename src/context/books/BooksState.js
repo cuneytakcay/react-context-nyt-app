@@ -25,9 +25,9 @@ const BooksState = props => {
 
 		dispatch({
 			type: GET_BOOKS,
-			payload: res.results.lists,
+			payload: res.data.results.lists,
 		});
-		console.log(res.results.lists);
+		console.log(res.data.results.lists);
 	};
 
 	// Search books by keyword and publish date

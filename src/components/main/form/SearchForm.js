@@ -17,16 +17,21 @@ export const SearchForm = () => {
 	const articlesContext = useContext(ArticlesContext);
 	const { searchArticles } = articlesContext;
 
+	// Displays the articles search field at the load of the page.
+	let initialKeyword = true;
+	if (showBooks) initialKeyword = false;
+
 	const onSubmit = (data, e) => {
 		e.preventDefault();
 		searchArticles(data);
 	};
 
-	const bgImage = showArticles
-		? articlesBackground
-		: showBooks
-		? booksBackground
-		: undefined;
+	const bgImage =
+		initialKeyword || showArticles
+			? articlesBackground
+			: showBooks
+			? booksBackground
+			: undefined;
 
 	const style = {
 		backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65),rgba(0, 0, 0, 0.85)), url(${bgImage})`,
