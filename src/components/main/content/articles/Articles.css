@@ -13,7 +13,7 @@
 	height: 100%;
 	overflow: hidden;
 	-webkit-box-shadow: 0px 5px 5px #ccc;
-	box-shadow: 0px 5px 5px #ccc;
+	box-shadow: 0px 3px 5px #ccc;
 }
 
 .articles-container .img-container {

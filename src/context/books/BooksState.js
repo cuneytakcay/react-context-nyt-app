@@ -15,19 +15,19 @@ const BooksState = props => {
 
 	const [state, dispatch] = useReducer(BooksReducer, initialState);
 
-	// Get books from NYT to display when books radio button selected
+	// Get top 5 bestseller books from NYT to display when books radio button selected
 	const getBooks = async () => {
 		setLoading();
 
 		const res = await axios.get(
-			`https://api.nytimes.com/svc/books/v3/lists/hardcover-fiction.json?api-key=${apiKey}`
+			`https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=${apiKey}`
 		);
 
 		dispatch({
 			type: GET_BOOKS,
-			payload: res.data.results,
+			payload: res.results.lists,
 		});
-		console.log(res.data.results)
+		console.log(res.results.lists);
 	};
 
 	// Search books by keyword and publish date
