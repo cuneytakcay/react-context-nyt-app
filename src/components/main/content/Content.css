@@ -1,4 +1,4 @@
-.articles-container {
+.content-container {
 	max-width: 992px;
 	padding: 25px 16px 60px;
 	margin: 0 auto;
@@ -8,7 +8,7 @@
 	grid-gap: 25px;
 }
 
-.articles-container .article-card {
+.content-container .card {
 	border-radius: 3px;
 	height: 100%;
 	overflow: hidden;
@@ -16,11 +16,11 @@
 	box-shadow: 0px 3px 5px #ccc;
 }
 
-.articles-container .img-container {
+.content-container .img-container {
 	overflow: hidden;
 }
 
-.articles-container .img-container img {
+.content-container .img-container img {
 	display: block;
 	width: 100%;
 	height: 200px;
@@ -35,13 +35,13 @@
 	transition: transform 0.2s ease, -webkit-transform 0.2s ease;
 }
 
-.articles-container .img-container img:hover {
+.content-container .img-container img:hover {
 	-webkit-transform: scale(1.1);
 	-ms-transform: scale(1.1);
 	transform: scale(1.1);
 }
 
-.articles-container .text-container {
+.content-container .text-container {
 	padding: 10px 15px 17px;
 	min-height: 150px;
 	height: calc(100% - 200px);
@@ -54,7 +54,7 @@
 	flex-direction: column;
 }
 
-.articles-container h3 {
+.content-container h3 {
 	font-family: 'Libre Baskerville', serif;
 	font-size: 16px;
 	font-weight: 700;
@@ -64,7 +64,7 @@
 	position: relative;
 }
 
-.articles-container h3::before {
+.content-container h3::before {
 	content: '';
 	position: absolute;
 	bottom: 0;
@@ -77,11 +77,11 @@
 	transition: width 0.3s ease;
 }
 
-.articles-container h3:hover::before {
+.content-container h3:hover::before {
 	width: 100%;
 }
 
-.articles-container .date {
+.content-container .date {
 	display: block;
 	margin-bottom: 15px;
 	color: #5fa1d4;
@@ -89,14 +89,14 @@
 	font-weight: 600;
 }
 
-.articles-container p {
+.content-container p {
 	font-family: 'Libre Baskerville', serif;
 	font-size: 14px;
 	line-height: 1.5;
 	margin-bottom: 20px;
 }
 
-.articles-container .card-actions {
+.content-container .card-actions {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -109,7 +109,7 @@
 	margin-top: auto;
 }
 
-.articles-container .card-actions .btn {
+.content-container .card-actions .btn {
 	font-size: 18px;
 	text-transform: lowercase;
 	padding: 5px 5px 6px;
@@ -123,7 +123,7 @@
 	position: relative;
 }
 
-.articles-container .card-actions .btn::before {
+.content-container .card-actions .btn::before {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -137,15 +137,15 @@
 	transition: 0.2s ease;
 }
 
-.articles-container .card-actions .btn:hover::before {
+.content-container .card-actions .btn:hover::before {
 	width: 100%;
 }
 
-.articles-container .card-actions .btn span {
+.content-container .card-actions .btn span {
 	position: relative;
 }
 
-.articles-container .card-actions .btn i {
+.content-container .card-actions .btn i {
 	margin-left: 5px;
 	font-size: 16px;
 	color: #5fa1d4;
@@ -154,30 +154,30 @@
 	transition: color 0.2s ease;
 }
 
-.articles-container .card-actions .btn:hover i,
-.articles-container .card-actions .btn:focus i {
+.content-container .card-actions .btn:hover i,
+.content-container .card-actions .btn:focus i {
 	color: #fff;
 }
 
-.articles-container .card-actions .btn:hover {
+.content-container .card-actions .btn:hover {
 	color: #fff;
 }
 
-.articles-container .card-actions .btn:focus {
+.content-container .card-actions .btn:focus {
 	background-color: #60a0d1;
 	color: #fff;
 }
 
-.articles-container .card-actions .share-btn {
+.content-container .card-actions .share-btn {
 	position: relative;
 	overflow: hidden;
 }
 
-.articles-container .card-actions .share-btn::before {
+.content-container .card-actions .share-btn::before {
 	content: none;
 }
 
-.articles-container .card-actions .share-btn .fb-tw {
+.content-container .card-actions .share-btn .fb-tw {
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -195,33 +195,33 @@
 	transition: 0.3s ease;
 }
 
-.articles-container .card-actions .share-btn:hover .fb-tw {
+.content-container .card-actions .share-btn:hover .fb-tw {
 	left: 0;
 }
 
-.articles-container .card-actions .share-btn .fb,
-.articles-container .card-actions .share-btn .tw {
+.content-container .card-actions .share-btn .fb,
+.content-container .card-actions .share-btn .tw {
 	-webkit-box-flex: 1;
 	-ms-flex: 1;
 	flex: 1;
 	padding: 7px 0 6px;
 }
 
-.articles-container .card-actions .share-btn .fb {
+.content-container .card-actions .share-btn .fb {
 	border-right: 1px solid #60a0d1;
 }
 
-.articles-container .card-actions .share-btn .fb-tw i {
+.content-container .card-actions .share-btn .fb-tw i {
 	color: #60a0d1;
 }
 
 @media (max-width: 1024px) {
-	.articles-container .card-actions .share-btn .fb-tw {
+	.content-container .card-actions .share-btn .fb-tw {
 		left: 0;
 	}
 }
 
-.articles-container a {
+.content-container a {
 	display: block;
 	text-decoration: none;
 }

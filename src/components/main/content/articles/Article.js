@@ -12,7 +12,7 @@ export const Article = ({
 
 	return (
 		<article>
-			<div className="article-card">
+			<div className="card">
 				<div className="img-container">
 					<a href={web_url} target="_blank" rel="noopener noreferrer">
 						<img src={img} alt={headline.main} />
