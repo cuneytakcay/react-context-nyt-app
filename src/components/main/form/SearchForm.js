@@ -34,7 +34,7 @@ export const SearchForm = () => {
 			: undefined;
 
 	const style = {
-		backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.65),rgba(0, 0, 0, 0.85)), url(${bgImage})`,
+		backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.50),rgba(0, 0, 0, 0.80)), url(${bgImage})`,
 		backgroundSize: 'cover',
 		backgroundPosition: 'center',
 	};
