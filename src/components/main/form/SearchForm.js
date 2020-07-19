@@ -33,6 +33,20 @@ export const SearchForm = () => {
 			? booksBackground
 			: undefined;
 
+	const placeholder =
+		initialKeyword || showArticles
+			? 'e.g., covid-19...'
+			: showBooks
+			? 'e.g., Catch 22...'
+			: undefined;
+
+	const label =
+		initialKeyword || showArticles
+			? 'Keyword'
+			: showBooks
+			? 'Title'
+			: undefined;
+
 	const style = {
 		backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.50),rgba(0, 0, 0, 0.80)), url(${bgImage})`,
 		backgroundSize: 'cover',
@@ -43,11 +57,8 @@ export const SearchForm = () => {
 		<div className="search-form" style={style}>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<RadioField register={register} />
-				<KeywordField
-					register={register}
-					placeholder="e.g., covid-19..."
-				/>
-				<DateField register={register} />
+				<KeywordField register={register} label={label} placeholder={placeholder} />
+				{showArticles && <DateField register={register} />}
 				<div className="search-btn form-item">
 					<button>
 						<span>Search</span>
