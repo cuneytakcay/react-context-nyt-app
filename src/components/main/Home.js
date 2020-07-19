@@ -7,7 +7,7 @@ import BooksContext from '../../context/books/booksContext';
 export const Home = () => {
 	const booksContext = useContext(BooksContext);
 	const { isBooks } = booksContext;
-console.log(isBooks)
+
 	return (
 		<main>
 			<SearchForm />
