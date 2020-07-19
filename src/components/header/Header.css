@@ -26,6 +26,28 @@ header nav li {
 	display: inline-block;
 }
 
+header nav li {
+	position: relative;
+}
+
+header nav li:first-child::before,
+header nav li:last-child::after {
+	content: '';
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20vw;
+    height: 1px;
+    display: block;
+    background-color: #60a0d1;
+}
+
+header nav li:last-child::after {
+	left: 100%;
+	right: auto;
+}
+
 header nav a {
 	font-family: 'Libre Baskerville', serif;
 	font-size: 14px;
