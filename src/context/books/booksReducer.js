@@ -1,4 +1,4 @@
-import { GET_BOOKS, SEARCH_BOOKS, SET_LOADING } from '../types';
+import { GET_BOOKS, SEARCH_BOOKS, SET_BOOKS, SET_LOADING } from '../types';
 
 export default (state, action) => {
 	switch (action.type) {
@@ -17,6 +17,11 @@ export default (state, action) => {
 					action.payload.books.length
 				} books with the keyword "${action.payload.data.keyword.trim()}"`,
 				loading: false,
+			};
+		case SET_BOOKS:
+			return {
+				...state,
+				isBooks: action.payload,
 			};
 		case SET_LOADING:
 			return {

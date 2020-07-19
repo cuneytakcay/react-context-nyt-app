@@ -1,42 +1,47 @@
 import React from 'react';
-import Moment from 'react-moment';
 import noImage from '../noImage.png';
 
-export const Article = ({
-	article: { web_url, headline, multimedia, lead_paragraph, pub_date },
+export const Book = ({
+	book: { amazon_product_url, title, book_image, description, author },
 }) => {
-	const img = multimedia.length > 0 && multimedia[0].url ? `https://static01.nyt.com/${multimedia[0].url}` : noImage;
+	const img = book_image ? book_image : noImage;
 
-	const fbShareLink = `https://www.facebook.com/sharer/sharer.php?u=${web_url}&amp;src=sdkpreparse`;
-	const twShareLink = `https://twitter.com/intent/tweet?text=${headline.main} - ${web_url}`;
+	const fbShareLink = `https://www.facebook.com/sharer/sharer.php?u=${amazon_product_url}&amp;src=sdkpreparse`;
+	const twShareLink = `https://twitter.com/intent/tweet?text=${title} - ${amazon_product_url}`;
 
 	return (
 		<article>
 			<div className="card">
 				<div className="img-container">
-					<a href={web_url} target="_blank" rel="noopener noreferrer">
-						<img src={img} alt={headline.main} />
+					<a
+						href={amazon_product_url}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<img src={img} alt={title} />
 					</a>
 				</div>
 				<div className="text-container">
-					<a href={web_url} target="_blank" rel="noopener noreferrer">
-						<h3>{headline.main}</h3>
+					<a
+						href={amazon_product_url}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<h3>{title}</h3>
 					</a>
-					<span className="date">
-						<Moment format="MMM DD, YYYY">{pub_date}</Moment>
-					</span>
-					<p>{lead_paragraph.substr(0, 200)}...</p>
+					<span className="date">{author}</span>
+					<p>{description}</p>
 					<div className="card-actions">
 						<a
 							className="btn read-btn"
-							href={web_url}
+							href={amazon_product_url}
 							target="_blank"
 							rel="noopener noreferrer"
 						>
 							<span>
-								Read
+								Purchase
 								<i
-									className="fab fa-readme"
+									className="fas fa-credit-card"
 									aria-hidden="true"
 								/>
 							</span>

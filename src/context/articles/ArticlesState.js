@@ -30,7 +30,7 @@ const ArticlesState = props => {
 	};
 
 	useEffect(() => {
-		// getArticles();
+		getArticles();
 		// eslint-disable-next-line
 	}, []);
 

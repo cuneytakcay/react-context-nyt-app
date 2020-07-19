@@ -6,17 +6,19 @@ export const RadioField = ({ register }) => {
 	const [books, setBooks] = useState(false);
 
 	const booksContext = useContext(BooksContext);
-	const { getBooks } = booksContext;
-	
+	const { getBooks, setBooksState } = booksContext;
+
 	const handleArticles = () => {
 		setArticles(true);
 		setBooks(false);
+		setBooksState(false);
 	};
 
 	const handleBooks = () => {
 		setArticles(false);
 		setBooks(true);
 		getBooks();
+		setBooksState(true);
 	};
 
 	return (

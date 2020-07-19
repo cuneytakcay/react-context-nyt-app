@@ -3,3 +3,4 @@ export const SEARCH_ARTICLES = 'SEARCH_ARTICLES';
 export const SET_LOADING = 'SET_LOADING';
 export const GET_BOOKS = 'GET_BOOKS';
 export const SEARCH_BOOKS = 'SEARCH_BOOKS';
+export const SET_BOOKS = 'SET_BOOKS';

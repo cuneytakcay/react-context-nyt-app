@@ -2,7 +2,7 @@ import React, { useReducer } from 'react';
 import axios from 'axios';
 import BooksContext from './booksContext';
 import BooksReducer from './booksReducer';
-import { SEARCH_BOOKS, GET_BOOKS, SET_LOADING } from '../types';
+import { SEARCH_BOOKS, GET_BOOKS, SET_BOOKS, SET_LOADING } from '../types';
 
 const apiKey = process.env.REACT_APP_ARTICLE_API_KEY;
 
@@ -11,6 +11,7 @@ const BooksState = props => {
 		books: [],
 		title: '',
 		loading: false,
+		isBooks: false,
 	};
 
 	const [state, dispatch] = useReducer(BooksReducer, initialState);
@@ -23,11 +24,13 @@ const BooksState = props => {
 			`https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=${apiKey}`
 		);
 
+		const len = res.data.results.lists.length;
+		const ind = Math.floor(Math.random() * len);
+
 		dispatch({
 			type: GET_BOOKS,
-			payload: res.data.results.lists,
+			payload: res.data.results.lists[ind].books,
 		});
-		console.log(res.data.results.lists);
 	};
 
 	// Search books by keyword and publish date
@@ -49,6 +52,14 @@ const BooksState = props => {
 		});
 	};
 
+	// Set Books container when selected
+	const setBooksState = state => {
+		dispatch({
+			type: SET_BOOKS,
+			payload: state,
+		});
+	};
+
 	// Set Loading to display spinner
 	const setLoading = () => dispatch({ type: SET_LOADING });
 
@@ -58,8 +69,10 @@ const BooksState = props => {
 				books: state.books,
 				title: state.title,
 				loading: state.loading,
+				isBooks: state.isBooks,
 				getBooks,
 				searchBooks,
+				setBooksState,
 			}}
 		>
 			{props.children}
