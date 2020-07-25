@@ -1,6 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
-import noImage from '../noImage.png';
+import noImage from '../../articles-background.jpg';
 
 export const Article = ({
 	article: { web_url, headline, multimedia, lead_paragraph, pub_date },

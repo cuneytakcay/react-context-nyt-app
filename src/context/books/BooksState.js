@@ -33,23 +33,22 @@ const BooksState = props => {
 		});
 	};
 
-	// Search books by keyword and publish date
+	// Search books by title
 	const searchBooks = async data => {
 		setLoading();
 
 		const res = await axios.get(
-			`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${data.keyword.trim()}&begin_date=${
-				data.beginDate
-			}&end_date=${data.endDate}&api-key=${apiKey}`
+			`https://api.nytimes.com/svc/books/v3/reviews.json?title=${data.keyword.trim()}&api-key=${apiKey}`
 		);
 
 		dispatch({
 			type: SEARCH_BOOKS,
 			payload: {
 				data: data,
-				books: res.data.response.docs,
+				books: res.data.results,
 			},
 		});
+		console.log(res.data.results)
 	};
 
 	// Set Books container when selected

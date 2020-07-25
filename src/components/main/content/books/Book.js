@@ -1,20 +1,22 @@
 import React from 'react';
-import noImage from '../noImage.png';
+import noImage from '../../books-background.jpg';
 
-export const Book = ({
-	book: { amazon_product_url, title, book_image, description, author },
-}) => {
-	const img = book_image ? book_image : noImage;
+export const Book = ({book}) => {
+	const img = book.book_image || noImage;
+	const url = book.amazon_product_url || book.url;
+	const title = book.title || book.book_title;
+	const description = book.description || book.summary;
+	const author = book.author || book.book_author;
 
-	const fbShareLink = `https://www.facebook.com/sharer/sharer.php?u=${amazon_product_url}&amp;src=sdkpreparse`;
-	const twShareLink = `https://twitter.com/intent/tweet?text=${title} - ${amazon_product_url}`;
+	const fbShareLink = `https://www.facebook.com/sharer/sharer.php?u=${url}&amp;src=sdkpreparse`;
+	const twShareLink = `https://twitter.com/intent/tweet?text=${title} - ${url}`;
 
 	return (
 		<article>
 			<div className="card">
 				<div className="img-container">
 					<a
-						href={amazon_product_url}
+						href={url}
 						target="_blank"
 						rel="noopener noreferrer"
 					>
@@ -23,7 +25,7 @@ export const Book = ({
 				</div>
 				<div className="text-container">
 					<a
-						href={amazon_product_url}
+						href={url}
 						target="_blank"
 						rel="noopener noreferrer"
 					>
@@ -34,12 +36,12 @@ export const Book = ({
 					<div className="card-actions">
 						<a
 							className="btn read-btn"
-							href={amazon_product_url}
+							href={url}
 							target="_blank"
 							rel="noopener noreferrer"
 						>
 							<span>
-								Purchase
+								Buy
 								<i
 									className="fas fa-credit-card"
 									aria-hidden="true"

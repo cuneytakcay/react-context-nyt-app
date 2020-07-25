@@ -3,10 +3,11 @@ import { useForm } from 'react-hook-form';
 import { RadioField } from './RadioField';
 import { KeywordField } from './KeywordField';
 import { DateField } from './DateField';
-import articlesBackground from './articles-background.jpg';
-import booksBackground from './books-background.jpg';
+import articlesBackground from '../articles-background.jpg';
+import booksBackground from '../books-background.jpg';
 import './SearchForm.css';
 import ArticlesContext from '../../../context/articles/articlesContext';
+import BooksContext from '../../../context/books/booksContext';
 
 export const SearchForm = () => {
 	const { register, handleSubmit, watch } = useForm();
@@ -17,31 +18,38 @@ export const SearchForm = () => {
 	const articlesContext = useContext(ArticlesContext);
 	const { searchArticles } = articlesContext;
 
+	const booksContext = useContext(BooksContext);
+	const { searchBooks } = booksContext;
+
 	// Displays the articles search field at the load of the page.
-	let initialKeyword = true;
-	if (showBooks) initialKeyword = false;
+	let initialState = true;
+	if (showBooks) initialState = false;
 
 	const onSubmit = (data, e) => {
 		e.preventDefault();
-		searchArticles(data);
+		if (initialState || showArticles) {
+			searchArticles(data);
+		} else if (showBooks) {
+			searchBooks(data);
+		}
 	};
 
 	const bgImage =
-		initialKeyword || showArticles
+		initialState || showArticles
 			? articlesBackground
 			: showBooks
 			? booksBackground
 			: undefined;
 
 	const placeholder =
-		initialKeyword || showArticles
+		initialState || showArticles
 			? 'e.g., covid-19...'
 			: showBooks
 			? 'e.g., Catch 22...'
 			: undefined;
 
 	const label =
-		initialKeyword || showArticles
+		initialState || showArticles
 			? 'Keyword'
 			: showBooks
 			? 'Title'
@@ -57,8 +65,12 @@ export const SearchForm = () => {
 		<div className="search-form" style={style}>
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<RadioField register={register} />
-				<KeywordField register={register} label={label} placeholder={placeholder} />
-				{showArticles && <DateField register={register} />}
+				<KeywordField
+					register={register}
+					label={label}
+					placeholder={placeholder}
+				/>
+				{(initialState || showArticles) && <DateField register={register} />}
 				<div className="search-btn form-item">
 					<button>
 						<span>Search</span>
