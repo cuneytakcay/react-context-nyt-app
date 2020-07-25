@@ -1,7 +1,7 @@
 import React from 'react';
 import noImage from '../../books-background.jpg';
 
-export const Book = ({book}) => {
+export const Book = ({ book }) => {
 	const img = book.book_image || noImage;
 	const url = book.amazon_product_url || book.url;
 	const title = book.title || book.book_title;
@@ -15,20 +15,12 @@ export const Book = ({book}) => {
 		<article>
 			<div className="card">
 				<div className="img-container">
-					<a
-						href={url}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
+					<a href={url} target="_blank" rel="noopener noreferrer">
 						<img src={img} alt={title} />
 					</a>
 				</div>
 				<div className="text-container">
-					<a
-						href={url}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
+					<a href={url} target="_blank" rel="noopener noreferrer">
 						<h3>{title}</h3>
 					</a>
 					<span className="date">{author}</span>
@@ -40,13 +32,16 @@ export const Book = ({book}) => {
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							<span>
-								Buy
-								<i
-									className="fas fa-credit-card"
-									aria-hidden="true"
-								/>
-							</span>
+							{book.amazon_product_url && (
+								<span>
+									Buy
+									<i
+										className="fas fa-credit-card"
+										aria-hidden="true"
+									/>
+								</span>
+							)}
+							{book.url && <span>Learn More</span>}
 						</a>
 						<div className="btn share-btn">
 							<span className="share">

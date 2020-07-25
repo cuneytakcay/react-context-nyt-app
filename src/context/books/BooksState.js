@@ -31,6 +31,8 @@ const BooksState = props => {
 			type: GET_BOOKS,
 			payload: res.data.results.lists[ind].books,
 		});
+
+		console.log(res.data.results.lists[ind].books);
 	};
 
 	// Search books by title
@@ -48,7 +50,6 @@ const BooksState = props => {
 				books: res.data.results,
 			},
 		});
-		console.log(res.data.results)
 	};
 
 	// Set Books container when selected
