@@ -5,15 +5,18 @@ import { KeywordField } from './KeywordField';
 import { DateField } from './DateField';
 import articlesBackground from '../articles-background.jpg';
 import booksBackground from '../books-background.jpg';
+import moviesBackground from '../movies-background.jpg';
 import './SearchForm.css';
 import ArticlesContext from '../../../context/articles/articlesContext';
 import BooksContext from '../../../context/books/booksContext';
+import MoviesContext from '../../../context/movies/moviesContext';
 
 export const SearchForm = () => {
 	const { register, handleSubmit, watch } = useForm();
 
 	const showArticles = watch('articlesPicker');
 	const showBooks = watch('booksPicker');
+	const showMovies = watch('moviesPicker');
 
 	const articlesContext = useContext(ArticlesContext);
 	const { searchArticles } = articlesContext;
@@ -21,9 +24,12 @@ export const SearchForm = () => {
 	const booksContext = useContext(BooksContext);
 	const { searchBooks } = booksContext;
 
+	const moviesContext = useContext(MoviesContext);
+	const { searchMovies } = moviesContext;
+
 	// Displays the articles search field at the load of the page.
 	let initialState = true;
-	if (showBooks) initialState = false;
+	if (showBooks || showMovies) initialState = false;
 
 	const onSubmit = (data, e) => {
 		e.preventDefault();
@@ -31,6 +37,8 @@ export const SearchForm = () => {
 			searchArticles(data);
 		} else if (showBooks) {
 			searchBooks(data);
+		} else if (showMovies) {
+			searchMovies(data);
 		}
 	};
 
@@ -70,7 +78,9 @@ export const SearchForm = () => {
 					label={label}
 					placeholder={placeholder}
 				/>
-				{(initialState || showArticles) && <DateField register={register} />}
+				{(initialState || showArticles) && (
+					<DateField register={register} />
+				)}
 				<div className="search-btn form-item">
 					<button>
 						<span>Search</span>
