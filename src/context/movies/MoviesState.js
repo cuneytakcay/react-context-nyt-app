@@ -29,7 +29,7 @@ const MoviesState = props => {
 			payload: res.data.results,
 		});
 
-		console.log(res.data.results);
+		// console.log(res.data.results);
 	};
 
 	// Search movies by title

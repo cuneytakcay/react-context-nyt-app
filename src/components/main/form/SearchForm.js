@@ -47,21 +47,19 @@ export const SearchForm = () => {
 			? articlesBackground
 			: showBooks
 			? booksBackground
-			: undefined;
+			: moviesBackground;
 
 	const placeholder =
 		initialState || showArticles
 			? 'e.g., covid-19...'
 			: showBooks
 			? 'e.g., Catch 22...'
-			: undefined;
+			: 'e.g., Fight Club...';
 
 	const label =
 		initialState || showArticles
 			? 'Keyword'
-			: showBooks
-			? 'Title'
-			: undefined;
+			: 'Title'
 
 	const style = {
 		backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.50),rgba(0, 0, 0, 0.80)), url(${bgImage})`,
