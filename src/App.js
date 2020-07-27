@@ -8,22 +8,25 @@ import { Footer } from './components/footer/Footer';
 import './App.css';
 import ArticlesState from './context/articles/ArticlesState';
 import BooksState from './context/books/BooksState';
+import MoviesState from './context/movies/MoviesState';
 
 const App = () => {
 	return (
 		<ArticlesState>
 			<BooksState>
-				<Router>
-					<div className="app-container">
-						<Header />
-						<Switch>
-							<Route exact path="/" component={Home} />
-							<Route exact path="/about" component={About} />
-							<Route component={NotFound} />
-						</Switch>
-						<Footer />
-					</div>
-				</Router>
+				<MoviesState>
+					<Router>
+						<div className="app-container">
+							<Header />
+							<Switch>
+								<Route exact path="/" component={Home} />
+								<Route exact path="/about" component={About} />
+								<Route component={NotFound} />
+							</Switch>
+							<Footer />
+						</div>
+					</Router>
+				</MoviesState>
 			</BooksState>
 		</ArticlesState>
 	);

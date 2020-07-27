@@ -1,11 +1,11 @@
 import React, { useContext, Fragment } from 'react';
 import { Movie } from './Movie';
 import { Spinner } from '../Spinner';
-import moviesContext from '../../../../context/movies/moviesContext';
+import MoviesContext from '../../../../context/movies/moviesContext';
 import '../Content.css';
 
 export const MoviesContainer = () => {
-	const MoviesContext = useContext(MoviesContext);
+	const moviesContext = useContext(MoviesContext);
 	const { title, movies, loading } = moviesContext;
 
 	if (loading) {

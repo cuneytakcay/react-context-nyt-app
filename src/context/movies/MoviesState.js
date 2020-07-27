@@ -21,16 +21,15 @@ const MoviesState = props => {
 		setLoading();
 
 		const res = await axios.get(
-			`https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=${apiKey}`
+			`https://api.nytimes.com/svc/movies/v2/reviews/picks.json?api-key=${apiKey}`
 		);
-
-		const len = res.data.results.lists.length;
-		const ind = Math.floor(Math.random() * len);
 
 		dispatch({
 			type: GET_MOVIES,
-			payload: res.data,
+			payload: res.data.results,
 		});
+
+		console.log(res.data.results);
 	};
 
 	// Search movies by title

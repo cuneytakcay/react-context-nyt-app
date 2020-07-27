@@ -2,11 +2,11 @@ import React from 'react';
 import noImage from '../../movies-background.jpg';
 
 export const Movie = ({ movie }) => {
-	const img = movie.movie_image || noImage;
-	const url = movie.amazon_product_url || movie.url;
-	const title = movie.title || movie.movie_title;
-	const description = movie.description || movie.summary;
-	const author = movie.author || movie.movie_author;
+	const img = movie.multimedia.src || noImage;
+	const url = movie.link.url || movie.url;
+	const title = movie.display_title || movie.movie_title;
+	const description = movie.summary_short || movie.summary;
+	const author = movie.byline || movie.movie_author;
 
 	const fbShareLink = `https://www.facebook.com/sharer/sharer.php?u=${url}&amp;src=sdkpreparse`;
 	const twShareLink = `https://twitter.com/intent/tweet?text=${title} - ${url}`;
@@ -32,16 +32,7 @@ export const Movie = ({ movie }) => {
 							target="_blank"
 							rel="noopener noreferrer"
 						>
-							{movie.amazon_product_url && (
-								<span>
-									Buy
-									<i
-										className="fas fa-credit-card"
-										aria-hidden="true"
-									/>
-								</span>
-							)}
-							{movie.url && <span>Learn More</span>}
+							<span>Learn More</span>
 						</a>
 						<div className="btn share-btn">
 							<span className="share">
