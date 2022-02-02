@@ -10,7 +10,6 @@ export const KeywordField = ({ register, label, placeholder }) => {
 				placeholder={placeholder}
 				id="keyword"
 				ref={register}
-				required
 			/>
 		</div>
 	);

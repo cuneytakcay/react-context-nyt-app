@@ -1,48 +1,50 @@
-import React, { useReducer, useEffect } from 'react';
-import axios from 'axios';
-import ArticlesContext from './articlesContext';
-import ArticlesReducer from './articlesReducer';
-import { SEARCH_ARTICLES, GET_ARTICLES, SET_LOADING } from '../types';
+import React, { useReducer, useEffect } from 'react'
+import axios from 'axios'
+import ArticlesContext from './articlesContext'
+import ArticlesReducer from './articlesReducer'
+import { SEARCH_ARTICLES, GET_ARTICLES, SET_LOADING } from '../types'
 
-const apiKey = process.env.REACT_APP_ARTICLE_API_KEY;
+const apiKey = process.env.REACT_APP_ARTICLE_API_KEY
 
 const ArticlesState = props => {
 	const initialState = {
 		articles: [],
 		title: '',
 		loading: false,
-	};
+	}
 
-	const [state, dispatch] = useReducer(ArticlesReducer, initialState);
+	const [state, dispatch] = useReducer(ArticlesReducer, initialState)
 
 	// Get articles from NYT to display at the first page load
 	const getArticles = async () => {
-		setLoading();
+		setLoading()
 
 		const res = await axios.get(
 			`https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=${apiKey}`
-		);
+		)
 
 		dispatch({
 			type: GET_ARTICLES,
 			payload: res.data.response.docs,
-		});
-	};
+		})
+	}
 
 	useEffect(() => {
-		getArticles();
+		getArticles()
 		// eslint-disable-next-line
-	}, []);
+	}, [])
 
 	// Search articles by keyword and publish date
 	const searchArticles = async data => {
-		setLoading();
+		setLoading()
+
+		if (data.keyword.trim() === '') return getArticles()
 
 		const res = await axios.get(
 			`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${data.keyword.trim()}&begin_date=${
 				data.beginDate
 			}&end_date=${data.endDate}&api-key=${apiKey}`
-		);
+		)
 
 		dispatch({
 			type: SEARCH_ARTICLES,
@@ -50,11 +52,11 @@ const ArticlesState = props => {
 				data: data,
 				articles: res.data.response.docs,
 			},
-		});
-	};
+		})
+	}
 
 	// Set Loading to display spinner
-	const setLoading = () => dispatch({ type: SET_LOADING });
+	const setLoading = () => dispatch({ type: SET_LOADING })
 
 	return (
 		<ArticlesContext.Provider
@@ -67,7 +69,7 @@ const ArticlesState = props => {
 		>
 			{props.children}
 		</ArticlesContext.Provider>
-	);
-};
+	)
+}
 
-export default ArticlesState;
+export default ArticlesState
