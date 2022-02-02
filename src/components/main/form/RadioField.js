@@ -50,26 +50,17 @@ export const RadioField = ({ register }) => {
 					checked={articles}
 				/>
 				<label htmlFor="radioArticles">Articles</label>
-				<input
-					type="radio"
-					name="booksPicker"
-					id="radioBooks"
-					ref={register}
-					value="books"
-					onChange={handleBooks}
-					checked={books}
-				/>
-				<label htmlFor="radioBooks">Books</label>
-				<input
-					type="radio"
-					name="moviesPicker"
-					id="radioMovies"
-					ref={register}
-					value="movies"
-					onChange={handleMovies}
-					checked={movies}
-				/>
-				<label htmlFor="radioMovies">Movies</label>
+//				Movies field is not ready yet.
+// 				<input
+// 					type="radio"
+// 					name="booksPicker"
+// 					id="radioBooks"
+// 					ref={register}
+// 					value="books"
+// 					onChange={handleBooks}
+// 					checked={books}
+// 				/>
+// 				<label htmlFor="radioBooks">Books</label>
 			</div>
 		</fieldset>
 	);
